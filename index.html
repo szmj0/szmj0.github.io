@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<!-- var:251129 -->
+<!-- var:251202 -->
 <html>
 <head>
 	<title>神州明见</title>
@@ -4113,7 +4113,8 @@ IED的声明说：『中国政府企图以诬陷法轮功残害生命破坏家�
 		}
 
 		function scroll2(n) { window.scrollTo(0, n < 10 ? 0 : n); }
-
+		
+		var qrwidth=false;
 		function jmp(o, b) {
 			var divapp = document.getElementById('divapp');
 			//if (!b && g_bApple) return;
@@ -4129,7 +4130,7 @@ IED的声明说：『中国政府企图以诬陷法轮功残害生命破坏家�
 					eval('tdl' + i).style.color = o == d ? "white" : "#a76101";
 				}
 			}
-			if (o == d1) { divapp.style.display = "";qrcode1.style.display = "block"; } else { divapp.style.display = "none"; qrcode1.style.display = "none";}
+			if (o == d1) { divapp.style.display = "block";if (!qrwidth) qrcode1.style.display = "block"; } else { divapp.style.display = "none"; qrcode1.style.display = "none";}
 			o.style.display = "";
 			scroll2(0);
 		}
@@ -4843,6 +4844,7 @@ IED的声明说：『中国政府企图以诬陷法轮功残害生命破坏家�
 				Mainright.style.display = "none";
 				Mainleft.style.width = "100%";
 				qrcode1.style.display = "block";
+				qrwidth = false;
 				if (NoNetworkjs == 1) {
 					MainleftContent.style.width = "100%";
 					bq.style.padding='0.6em 20px';
@@ -4912,6 +4914,7 @@ IED的声明说：『中国政府企图以诬陷法轮功残害生命破坏家�
 				aboutdiv.style.fontSize = "1.2em";
 				aboutdiv.style.lineHeight = "2em";
 				atoutsm.style.paddingLeft = "35px";
+				qrwidth = true;
 				for (var i = 1; i < abouttitle.length; i++) {
 					abouttitle[i].style.lineHeight = "1.2em";
 				}
@@ -4967,6 +4970,7 @@ IED的声明说：『中国政府企图以诬陷法轮功残害生命破坏家�
 				aboutdiv.style.fontSize = "1.2em";
 				aboutdiv.style.lineHeight = "2em";
 				atoutsm.style.paddingLeft = "35px";
+				qrwidth = true;
 				for (var i = 1; i < abouttitle.length; i++) {
 					abouttitle[i].style.lineHeight = "1.2em";
 				}
