@@ -1378,12 +1378,12 @@
 					<div style="padding-top:30px;width:80%;" align="left">
 						<h3 style="color:#4d9cf9;">获取翻墙软件</h3>
 						<div class="MainLeftsize">
-							<a href="https://bit.ly/fgp88" target="_blank">自由门专业版</a>
-							<br> <a href="https://git.io/vFI6A" target="_blank">无界浏览</a>
-							<br> <a href="https://bit.ly/fgv88" target="_blank">自由门安卓VPN</a>
-							<br> <a href="https://bit.ly/szmjweb" target="_blank">szmj网页版（HTML）</a>
-							<br> <a href="https://bit.ly/szmjtv" target="_blank">szmjtv安卓改包版</a>
-							<br> <a href="https://bit.ly/szmjapp" target="_blank">szmjapp安卓改包版</a>
+							<a href="https://bit.ly/fgp88" target="_blank" noproxy>自由门专业版</a>
+							<br> <a href="https://git.io/vFI6A" target="_blank" noproxy>无界浏览</a>
+							<br> <a href="https://bit.ly/fgv88" target="_blank" noproxy>自由门安卓VPN</a>
+							<br> <a href="https://bit.ly/szmjweb" target="_blank" noproxy>szmj网页版（HTML）</a>
+							<br> <a href="https://bit.ly/szmjtv" target="_blank" noproxy>szmjtv安卓改包版</a>
+							<br> <a href="https://bit.ly/szmjapp" target="_blank" noproxy>szmjapp安卓改包版</a>
 						</div>
 						<br>
 						<p class="MainLeftsize">亦可经由下列二维条码下载</p>
@@ -2214,7 +2214,7 @@
 				<div style="padding-left:35px;">
 					<a href="mailto:feedback@shenzhouzhengdao.org" target="_blank">feedback@shenzhouzhengdao.org</a>
 				</div>
-				<div align="center"><font  size="3px">Ver:26010401</font></div>
+				<div align="center"><font  size="3px">Ver:26010701</font></div>
 			</div>
 			<br>
 		</div>
@@ -3304,9 +3304,9 @@ IED的声明说：『中国政府企图以诬陷法轮功残害生命破坏家�
 		// 修改软件的文件名和说明，每个文件一行。file 为源文件名，title 为文件说明。type 是分类，dir 是该分类所在目录。
 		var g_aList1 = [
 			{ type: "电脑、安卓、苹果设备点击直接翻墙网址", dir: "网络直连" },
-			{ file: "https://bit.ly/ddw2288", title: "动态网" },
-			{ file: "https://bit.ly/ddw8866", title: "全球退党服务中心" },
-			{ file: "https://bit.ly/ddm6699", title: "明慧之窗" },
+			{ file: "htt"+"ps:/"+"/bit"+".ly/ddw2288", title: "动态网" },
+			{ file: "htt"+"ps:/"+"/bit"+".ly/ddw8866", title: "全球退党服务中心" },
+			{ file: "htt"+"ps:/"+"/bit"+".ly/ddm6699", title: "明慧之窗" },
 			{ type: "电脑软件", dir: "软件/电脑翻墙软件" },
 			{ file: "/cohQz.exe", title: "电脑翻墙软件：自由门 - 电脑版", source: !$.os.android && !$.os.ios ? "http://www.shenzhouzhengdao.org/book_html/fg.exe" : '', download: "自由门.exe" },
 			{ file: "/pWvtg.exe", title: "电脑翻墙软件：无界浏览 - 电脑版", download: "无界浏览.exe" },
@@ -4449,6 +4449,9 @@ IED的声明说：『中国政府企图以诬陷法轮功残害生命破坏家�
 		
 		/*回调函数--当没找到有效节点时触发。如果存在此函数，就在找不到节点时执行此函数，否则就显示默认的提示信息。*/
 		function NotFoundSite() {
+			document.addEventListener('DOMContentLoaded', function () {
+					initPlayer();
+			});
 			var nojd = document.getElementById('nojd');
 			if (NoNetworkjs != 1) {
 				nojd.style.display = "block";
