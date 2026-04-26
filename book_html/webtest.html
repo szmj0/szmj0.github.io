@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>网站测试</title>
+</head>
+
+<body>
+<h2 align="center">请输入要测试的网址</h2>
+<p align="center">如果域名不带http或https则默认https<br>每个域名独占一行</p>
+<p align="center">
+  <textarea id="webtest" cols="80" rows="15"></textarea>
+</p>
+<p>
+  <label>
+  <div align="center">
+    <input type="submit" name="Submit" value="提交" onClick="processLines();">
+  </div>
+  </label>
+</p>
+<div style="display:flex;width:800px; margin:auto" align="center">
+  <div style="width:50%;border: 1px solid black;">
+  通过测试：
+  <div id=pass style="padding:20px;max-height:300px;overflow-y: auto;" align="left"></div>
+  </div>
+  <div style="width:50%;border: 1px solid black;">未通过测试：
+  <div id=notpass style="padding:20px;max-height:300px;overflow-y: auto;" align="left"></div>
+  
+  </div>
+</div>
+ <div id=testover align="center"></div>
+ <p align="center">注意：有可能因为网络原因造成测试未通过，建议手动测试确认。</p>
+  <script>
+var pass = document.getElementById('pass'),notpass = document.getElementById('notpass'),testover = document.getElementById('testover'),m = 0, n = 0,j = 0;
+
+function processLines() {
+    var webtest = document.getElementById('webtest');
+    var text =  webtest.value;
+    var lines = text.split('\n'); // 使用 '\n' 分割行
+	
+
+    // 遍历每行并处理
+    lines.forEach(function(line, index) {
+		var substr = line.slice(0, 4);
+		if (substr != "http") line = 'https://' + line;
+		console.log('行 ' + (index + 1) + ': ' + line);
+		j +=1;
+		checkWebsite(line);
+		testover.innerHTML = '<p>测试结果：共测试<span  style=" font-size:16; color:red;font-weight: bold;">'+ j + '</span>个网址，通过<span  style=" font-size:16; color:red;font-weight: bold;">' + m + '</span>个，失败<span  style=" font-size:16; color:red;font-weight: bold;">' + n + '</span>个。</p>'
+        // 在这里可以添加更多处理逻辑
+    });
+} 
+function checkWebsite(url) {
+	pass.innerHTML = '';
+	notpass.innerHTML = '';
+    const xhr = new XMLHttpRequest();
+    xhr.open('HEAD', url, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) { // 请求完成
+            if (xhr.status >= 200 && xhr.status < 300) {
+				pass.innerHTML = pass.innerHTML + url + '<br>';
+				m+= 1;
+				testover.innerHTML = '<p>测试结果：共测试<span  style=" font-size:16; color:red;font-weight: bold;">'+ j + '</span>个网址，通过<span  style=" font-size:16; color:red;font-weight: bold;">' + m + '</span>个，失败<span  style=" font-size:16; color:red;font-weight: bold;">' + n + '</span>个。</p>'
+            } else {
+                notpass.innerHTML = notpass.innerHTML + url + '<br>';
+				n+= 1;
+				testover.innerHTML = '<p>测试结果：共测试<span  style=" font-size:16; color:red;font-weight: bold;">'+ j + '</span>个网址，通过<span  style=" font-size:16; color:red;font-weight: bold;">' + m + '</span>个，失败<span  style=" font-size:16; color:red;font-weight: bold;">' + n + '</span>个。</p>'
+            }
+        }
+    };
+    xhr.send();
+}
+
+  </script>
+</body>
+</html>
