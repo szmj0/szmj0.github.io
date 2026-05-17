@@ -4,29 +4,60 @@
 <title>翻墙工具箱</title>
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0">
+<script type="text/javascript" src="../webjs.js"></script>
+<script type="text/javascript" src="qrcode.min.js"></script>
 <style>
 table {width:100%;border-collapse: collapse; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);}
 tr {width:100%;border: 1px solid #c0c0c0;}
-td {padding:5px 5px 5px 20px;}
+td {padding:5px;}
 .biaotr1 {background-color:#0066CC;}
 .biaotr2 {background-color:#DDF1FB;}
 .biaotr3 {background-color:#EEF7FD;}
 span {font-size: 1.10em;font-weight: bold; color:#FFFFFF}
+.modal {
+  display:none ; /* 默认不显示 */
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 200px; 
+}
 </style>
 </head>
 <body>
-  <div align="center" style="max-width:800px; margin:0 auto;padding:10px;"><h2>翻墙工具箱</h2><img src='https://www.szzd.uk/BQQYOdag' width='300px'><br>扫码直接翻墙<br>本页网址：<a href="http://www.shenzhouzhengdao.org/book_html/fqgjx.html" target="_blank">点击打开</a><br><br>
+ <div id="myModal" class="modal" align="center">
+  <div class="modal-content">
+    <div class="close"  align="right"></div>
+    <div id=gjQR></div>
+	<div id=text style="padding:5px;"></div>
+  </div>
+</div>
+  <div align="center" style="max-width:800px; margin:0 auto;padding:10px;"><h2>翻墙工具箱</h2><img src='https://www.szzd.uk/CcZbbeEY' width='300px'><br>扫码直接翻墙<br>本页网址：<a href="http://www.szzd.org/ORZmbeF4" target="_blank">点击打开</a><br><br>
+  
 <table>
   <tr class=biaotr1>
-    <td colspan="2"><span> 大陆直连翻墙网址</span></td>
+    <td colspan="3"><span> 大陆直连翻墙网址</span></td>
   </tr>
   <tr class=biaotr2>
-    <td width="85%;" >「神州明见主页」</td>
-    <td width="15%;" ><a id=szmjlink href="http://www.szzd.org/ucqy" target="_blank" >打开</a></td>
+    <td width="70%;" ><div id=mjmian>「神州明见主页」</div></td>
+    <td width="10%;" ><a id=szmjlink href="http://www.szzd.org/ucqy" target="_blank" >打开</a></td>
+	<td width="20%;"  style="text-align: center;"><a href="javascript:showQRCode('gjQR', szmjlink.href, 200);" onClick="openModal();">二维码</a></td>
   </tr>
   <tr class=biaotr3>
-    <td>「干净世界视频」</td>
+    <td><div id=gjvideo>「干净世界视频」</div></td>
     <td><a id=gjlink href="http://www.szzd.org/BMYPTkVs" target="_blank">打开</a></td>
+	<td style="text-align: center;"><a href="javascript:showQRCode('gjQR', gjlink.href, 200);" onClick="openModal();">二维码</a></td>
   </tr>
 </table><br>
 <table>
@@ -57,14 +88,91 @@ span {font-size: 1.10em;font-weight: bold; color:#FFFFFF}
 </table>
 <br><div align="left" style="max-width:800px; margin:0 auto;font-weight: bold;">*用翻墙软件可以浏览被中共封锁的国外网站，网络封锁严重时如果不能访问，可改时间再试，或尝试多个翻墙软件。如果有最新版本的翻墙软件，请及时下载。</div>
 </div><br><br>
+	<img src="" style="display:none;" id="c" rel="YUhSMGNITTZMeTlrYVdObVpHdG1ZbkZ3ZEdOdExtTnNiM1ZrWm5KdmJuUXVibVYwTHl4b2RIUndjem92TDJvdWJYQXZaR1IzTWpJNE9Ec3hNanN4T3c9PQ==" nov="1" pwa="1" >
 
 <script>
-var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementById('gjlink');
+var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementById('gjlink'),text = document.getElementById('text');
 var hash = window.location.href;
-var match = hash.match(/#.*/);
-if (match) {
-szmjlink.href = szmjlink.href + match[0];
-gjlink.href = gjlink.href + match[0];
+var match1 = hash.match(/#.*/);
+	//生成二维码
+    function showQRCode(id, text, size){
+        if(!window.QRCode){
+            return;
+        }
+        var div = document.getElementById(id);
+		if(div){
+			div.innerHTML = '';
+			new QRCode(div, {
+				text: text,
+				width: size,
+				height: size,
+				colorDark: "#000000",
+				colorLight: "#ffffff",
+				correctLevel: QRCode.CorrectLevel.L
+			});
+		}
+    }
+if (match1) {
+szmjlink.href = szmjlink.href + match1[0];
+gjlink.href = gjlink.href + match1[0];
+}
+
+//修改大陆直连的网址介绍
+(function () {
+			var hash = location.hash || '' /*可以在这里设置默认值*/;
+			var match = hash.match(/#(gj_\w+)$/);
+			if (match) {
+				var gjid = match[1];
+				var cjsonp = $('img#c').attr('jsonp');
+				cjsonp = (cjsonp ? cjsonp + ',' : '') + gjid;
+				$('img#c').attr('jsonp', cjsonp);
+				
+				window['jsonpCallback_' + gjid] = function (json) {
+					if (json && json.result && json.data && json.data.list && json.data.list.length > 0) {
+						var title = '';
+						if (gjid.length == 33) {
+							var v = json.data.list[0], icon = v.channel.icon;
+							if (icon && (icon.indexOf('cloudokyo.cloud/') !== -1 || icon.indexOf('edgefare.net/') !== -1)) {
+								title += ' <img src="' + icon + '" height="20px;"> ';
+							} else {
+								title += ' -- ';
+							}
+							title = ' -- ' +title+ v.channel.name ;
+						}
+						
+						$('#mjmian').append(title);
+						$('#gjvideo').append(title);
+						text.innerHTML = ' <img src="' + icon + '" height="20"> ' + v.channel.name ;
+					}
+				};
+			}
+		})();
+		loadWeb();
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+ 
+function openModal() {
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+  modal.style.display = "block"; // 显示模态框
+}
+ 
+function closeModal() {
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+  modal.style.display = "none"; // 隐藏模态框
+}
+ 
+span.onclick = function() {
+  closeModal(); // 点击关闭按钮关闭模态框
+}
+ 
+window.onclick = function(event) { // 点击模态框外部关闭模态框（可选）
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+  if (event.target == modal) {
+    closeModal();
+  }
 }
 </script>
 </body>
