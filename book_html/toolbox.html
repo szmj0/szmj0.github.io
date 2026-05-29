@@ -219,7 +219,7 @@ var span = document.getElementsByClassName("close")[0];
 		var url = window.location.href;
 		var domain = url.match(/:\/\/(.[^/]+)/)[1];
 		var tld = domain.split('.').slice(-2).join('.');
-		if (tld == "www.szzd.org") {
+		//if (tld == "www.szzd.org") {
 			//处理缓存
 			window.addEventListener('load', function () {
 				navigator.serviceWorker.register("sw.js")
@@ -233,5 +233,5 @@ var span = document.getElementsByClassName("close")[0];
 				$.preloadDownload('a.preload-download', 'source');
 				//$.preloadPage('a.preload-page', 'href');
 			});
-		}
+		//}
 </script>
