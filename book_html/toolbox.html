@@ -5,7 +5,6 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0">
 <script type="text/javascript" src="../webjs.js"></script>
-<script type="text/javascript" src="qrcode.min.js"></script>
 <style>
 table {width:100%;border-collapse: collapse; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);}
 tr {width:100%;border: 1px solid #c0c0c0;}
@@ -79,11 +78,11 @@ span {font-size: 1.10em;font-weight: bold; color:#FFFFFF}
     </tr>
     <tr class=biaotr2>
       <td width="85%;">「神州明见8.0」：可自定义访问干净世界频道</td>
-      <td width="15%;"><a href="http://www.szzd.org/BUWF2Fty" target="_blank" class="preload-download preloaded">下载</a></td>
+      <td width="15%;"><a href="http://www.szzd.org/BUWF2Fty" target="_blank" class="preload-download preloaded" source="http://pick.szzd.me/files/app-release.apk" download="神州明见8.apk">下载</a></td>
     </tr>
     <tr class=biaotr3>
       <td>「神州明见7.2 tv版」：神州明见的电视版，可以安装到网络机顶盒上，也可以在手机上使用</td>
-      <td><a href="http://www.szzd.org/ZZydQ" target="_blank" class="preload-download preloaded">下载</a></td>
+      <td><a href="http://www.szzd.org/ZZydQ" target="_blank" class="preload-download preloaded" source="https://github.com/szmj0/update/raw/refs/heads/main/extras/szmjtv_v7.2.2025121701.apk" download="神州明见tv版7_2.apk">下载</a></td>
     </tr>
     <tr class=biaotr2>
       <td>「Chrome手机版」：将Chromium加入翻墙代码，实现翻墙功能</td>
@@ -91,7 +90,7 @@ span {font-size: 1.10em;font-weight: bold; color:#FFFFFF}
     </tr>
     <tr class=biaotr3>
       <td>「手机版自由门VPN」：可自由添加关注的干净世界频道</td>
-      <td><a href="http://www.szzd.org/uwYnTWWT" target="_blank" class="preload-download preloaded">下载</a></td>
+	<td><a href="http://www.szzd.org/uwYnTWWT" target="_blank" class="preload-download preloaded" source="http://dongtaiwang.com/loc/dl/fgvpn.apk" download="手机版自由门VPN.apk">下载</a>
     </tr>
   </table>
   <br>
@@ -101,11 +100,11 @@ span {font-size: 1.10em;font-weight: bold; color:#FFFFFF}
     </tr>
     <tr class=biaotr2>
       <td width="85%;">「自由门」</td>
-      <td width="15%;"><a href="http://www.szzd.org/oSYQTnXj" target="_blank" class="preload-download preloaded">下载</a></td>
+      <td width="15%;"><a href="http://www.szzd.org/oSYQTnXj" target="_blank" class="preload-download preloaded" source="https://dongtaiwang.com/loc/software/fg/805/fg805p.exe" download="自由门.exe">下载</a></td>
     </tr>
     <tr class=biaotr3>
       <td width="85%;">「无界」</td>
-      <td width="15%;"><a href="http://www.szzd.org/pWvtg.exe" target="_blank" class="preload-download preloaded">下载</a></td>
+      <td width="15%;"><a href="http://www.szzd.org/pWvtg.exe" target="_blank" class="preload-download preloaded" source="https://wujieliulan.com/download/u2211.exe" download="无界.exe">下载</a></td>
     </tr>
     </tr>
     
@@ -219,7 +218,7 @@ var span = document.getElementsByClassName("close")[0];
 		var url = window.location.href;
 		var domain = url.match(/:\/\/(.[^/]+)/)[1];
 		var tld = domain.split('.').slice(-2).join('.');
-		//if (tld == "www.szzd.org") {
+		if (tld == "www.shenzhouzhengdao.org") {
 			//处理缓存
 			window.addEventListener('load', function () {
 				navigator.serviceWorker.register("sw.js")
@@ -233,5 +232,6 @@ var span = document.getElementsByClassName("close")[0];
 				$.preloadDownload('a.preload-download', 'source');
 				//$.preloadPage('a.preload-page', 'href');
 			});
-		//}
+		}
+		console.log(tld);
 </script>
