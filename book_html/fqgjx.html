@@ -5,17 +5,20 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0">
 <script type="text/javascript" src="../webjs.js"></script>
-<script type="text/javascript" src="qrcode.min.js"></script>
 <style>
-table {width:100%;border-collapse: collapse; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);}
-tr {width:100%;border: 1px solid #c0c0c0;}
+body{
+background-color:#9ec2d8;
+}
+a {	text-underline-offset: 0.3em;color: #0000ef;}
+a:hover {color: #800080}
+
+table {width:100%;border-collapse: collapse; border-radius:5px;background-color:#FFFFFF}
 td {padding:5px;}
-.biaotr1 {background-color:#0066CC;}
-.biaotr2 {background-color:#DDF1FB;}
-.biaotr3 {background-color:#EEF7FD;}
-span {font-size: 1.10em;font-weight: bold; color:#FFFFFF}
+.biaotr1 {background-color:#18a2f3;border-radius: 5px 5px 0 0;}
+.biaotr2 {background-color:#1092db;border-radius: 5px 5px 0 0;}
+span {padding:3px;font-size: 1.20em;font-weight: bold; color:#FFFFFF}
 .modal {
-  display:none ; /* 默认不显示 */
+  display:none ; / 默认不显示 /
   position: fixed; 
   z-index: 1; 
   left: 0;
@@ -44,78 +47,47 @@ span {font-size: 1.10em;font-weight: bold; color:#FFFFFF}
   </div>
 </div>
 <div align="center" style="max-width:800px; margin:0 auto;padding:10px;">
-  <div align="center"  style="display: flex;align-items: center;  justify-content: center;max-height: 110px; ">
-    <div id=gjimg style="display: inline-block"></div>
-    <div style="display: inline-block">
-      <div style="height:100%;width:100%;">
-        <div id=gjname style="display:block"></div>
-        <div ><span style=" color:#000;font-size:24px;font-weight: bold;">翻墙工具箱</span></div>
-      </div>
+  <div align="center"  style="justify-content: center; margin-bottom:20px;min-height: 370px;max-width:480px; border-radius:10px;background-color:#FFFFFF; ">
+    <div style="padding:20px;">收藏二维码，自由浏览海外网站，永久免费，欢迎分享</div>
+    <div style="display: flex; padding-bottom:5px;justify-content: center; ">
+      <div style="display: inline-block; padding-right:10px;   max-width: 180px;"><img style="max-width:180px;width:100%;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMQAAAC0CAYAAADLhIOqAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAACUKSURBVHja7H19WFRl/vdHG2tIUmbCUENBRJJsZEbRwiJzcQALuiAYUld091egkhcVCtJYbvlCCIirPzWFrJTyDUyecBMYydQtSljBiMVV4sVXeKQZIgwePavPHzPncM7MmWGAAZmZ+3NdXjJnztucc3/u7/v3HnLv3r17ICAgAAAMJY+AgIAQgoCAEIKAgBCCgIAQgoCAEIKAgBCir6guP4n83P0AKDIaCCCw1x/e0tSAT7cpUarKxTifMIQpFvbhbBRUxwtxcMsyvPDyYkx7Rg4AaPrtLu7e7tDOPA86dPt30y/fG5x5XmQsnEe7k5E6QBhib4G5jlYNCguykbNtDbPNT65A4rrPAMHQXs0RjRcq8Hb0zH65X5HIBXuKr5KRSiRE/6hHmcpoaDTNnO03rl4CBA/2UjYA58pUFrk/d2+pwbY3lVlklBJCWF4qbE97A6WqXN7v/eWKPj3A4NAY1NZUYohoPDzdp2K44wjIZE9huHAk/isYhgeoO2b97+gotGctlqhM/Q8K+bmHUZCdZCAV2LPyxm3FcHAS9flaxDwjEmJQG83r303ElfP5RveZFbUSb8SshoPTI+RREtjuWzyak4ZjOdsMpIJI5MJ4gab4+pOB3I2jwG2yjBDCFqXCOJ8wzAkKR5giipCgm+d3RnUY354qw5Xz+XD3liJzXxmxIWxFKozzCUPssjhGGrS3d+IB6o4F7AXrf1btv7Uyn5uuN+BC+WleO2v5uqOQzwshEsKapYJI5IKFq/ciIGA2sy1n+1oc3ZsOAFictFcnLexPUrz5usKkXaUvWeXzgnUOA/t4VlYtIfikQviSRCj+ooTQUQgA6Gj9HTuyN+H7w5s5x2YVXLLDCDCF1wLdmeclErnAW76IcRWzo+bP+T2rczbY16RhlYQwZivMilqJVW+vY4JsLU0NSElSoKGmknf22/rxgV6/8I5WDf5Z+h0Aw1SMtuv/4qgkzR13cb2qxOT5xrhOwuixPSNo9IqUHt+36vgxHD/wARpqKjHOJwx/374ZQ4Rj9fYpxPEDH8BfrkBwaIxdqZhWR4ijOWmctAs2utIcDOMPIpGLgY68/qNiTPGd06v7SFg8g5doA4Xep3RQuueYiWM52wAAL7y8GM/PVeBi/TUAwNhRw/He8kDmOpN9n8ckWQie859l81LVagjReKECW1NiOYPQT66Ap7eUQ5DwJYlout7ARKXZ9kR+7mHsS1vCGVRbv7wAR0dHi5GSfe6Ro8cwn//7oDt8pZMMpEVvSTUraiVWJW7otYRrvFCBc2UqXvd0dPxG3u18v4uWbokp+wkh7pdU6PIezQFA4c3XF/AaitHxGzFPsQxC4cPMtoz0dzn2RPiSxB6qHobXc/eWYqwkAJ7uUyGTeOOx0e56aobxKHZHqwa3On9DRcXPaG/5N2prKo16fNiDctO+f5o9WzdeqMDhfenanC0AvzXdMHn+xUl7IZN44/C+9G7vxda8UYPaYtKXCiKRC0Ki4xEencD5CSERS/ARa4CO8wnDexvS4Tza1eAnvhGzGjWqz5mXfHRvui5QN8fsR+b62DBc0UmoqMWJcJss0aOMwOzH7OAkggNEkM9zBdA1oKrLT+L4ySLOvdIIiY7X/TbzkFtwiJPHJRK5YJxPGHylk5htoyfOAgAEzH4eQx/WTiBRixPxtu64WVEr4ek+Fb83/8wcU3FWhd+abuCFlxfjOb9nbcIbNSglREerBnmfpzNuUnoWflOZZRA9ZWew0oQJDo1BXW0lPDylvAZhdflJRkemB8j2w1U9MB4pVJef6bX90RNdHxAgP3c/ThdswRjXSZD6L+xmJtbWZgDQ7Ueh8UIV1sWHcojlJ1fgxVdiGClrSGCuJPSTK5CYso814Cmo1W1InD8V3vJFWJWYSlSmgTKa6QS8YU4i5nWojh9D5Zn9zMxHEwYA8/Lpgc4+rkt1SuaoTtoXPtj1YAqg7pqs22A/P5HIBaExaUzMJT93Py5VHONIC3dvKfzlCnh5z+AQnH0ed28pGmoqeRMh6f24sR/rlRIPvP/+++8PlptpaWrAxrfCeMng4CTCUFC4+0c73lq+CCUHP8DVun8z4jz53d1wcp2AU8dz8OOprwAAnZ23MFzkhCk+zxoMLNmUGTh5bB86O29pZ4ZHvDDv5ahB/rqGAkMfgNHKX+o2/nHia1ypLmV+//nv8nG54SL+uP0QXnopFM/OCYN/yBI86jIGw0c8ivY2Naq+L8HXebvwoIMQ3j7P4vrVOuxevwydnbcwK2olPsjYj4dEXvjp9FF8nfsR7oKCt8+zWttk7ya0tjShs/MWbl77GUHhy4iEsBTyc/dzvEB8M5L+zM52tQICdLRqsCJKwnG3GpMS9PVEIhes3VagswWsWwfuaNUgeVUsr5OBqyZxlbM7rRrmObOj2exqwo7W37EmPhANNZUGbmx3bymeD33b6jMABhEhKBzNyeSIez69Xt//z6fq6NsI2lSNhbw6euOFKp1XqCsqe/1qHTRNjcyejo5OVpL5SbEcElXILTjEa5T7yRVGbZGc7UqO7UY7KVa/vwljXcejvb0Ti+eIOER4LT6NZYsQo9qiXiW6NnlLzlneQahvY4hELthdfNXgNbCJw45Kd7RqUFer3X6p/gbudV5F+2+tKK+8hAduNxjEBWhDPTQ6ycpeNcWShIdxqeKYgQuV/m3y8Dg4OjpCdfwYPlobzgx0ZVouzqgOMwE8b/ki3NNc5sR4NJpm+MkVWJG0wyYi2oPMqNb3kPAjXbmQYxhGx29EeHSSSeIcLruDO3rqlCn4yRWYJAtBiGKhlc95FMtzpJWeF2vKOPEOP7kCf47bgPf+53nm2XSpq4/w5oPRQU3V0Z0MYea/vcvqYxGD0O1K6bn/+PVkfTth/SenMdbVw6jalFVwCcOFI/Fn+WO852SnKATJ5+lV0dlugltnZxvULS3IUL7Kkajtl0tZgzwYHa2/c54dO6B5/Wodvtj5LkpVub0IdA4uCKzxlhycHkFoTBpjgGs0zdj0/mps/TjXgFI0mq/W4wnfOQhfkoiKs9ouGWMlAZg4WoxpM+R6wTX7yfAUCoTYfyCLIYN2QK9DS9NVrH83ER+tDUflGYXB5HF0bzqarjdgRdIOPDZ6PBLXfYacse749qt9Vk0IK07/NkyhYKtO+hJi+9H/sCQI2/ijYM8VdPpGtPYZJrC8etxUF9oeo5MDR44eY6EmDYMDVt3K8r0N6RCJXJjPx3K2oaWpAQCFS/U3ODMaW53iEsBeyUAhP3e/gUcpZ9saHM3JZJ7LvDlBXI/TExPR0fo7wqMTsHZbAf77oDsKC7Jt5qlYMSEEcB7tipDoeGaLRtOM9e8mAgBqG35itk/2fR6kd6vh8ztdsIXjRJgVtZIhxZuvK5Cfexh7tnU5K9y9pfj+8GasiQ9EdfkZuE2WYOvHB/Ryy6wbgypS3Rs+e/s8je/PVqOt+YL2B93WIDD0NWxNfoXZ60+RqzF5ig/hgB4me8/Afy6UwVvmjxVJOzA7YB6cJ/qj9l8qNDf8C+e/y0drSxNDmHXbi3D7did+OPElTv4jBw86PAxvH3/YUs9sm2gy0NLUgNWLnwMArN1WgHNlKk6Ab09xg52rR+arUVrP0x/433XLOK5tbXp3MAABJ6HS1kpxbaTrRpc6dP3qZY4/nS9GQWDOI72NjC1rGYNaJHLhxBna29vReKGsVxm/dDYzAEQuShxUBrnNtbJk5+HYY18hS0807HQaS00w+hHxwfSOrEL5qy4/adbLy0hPZsggErlAmZZLxnQfDe/wBW8xxjZtcKcrF6KjVWN09jf1PUBBPi+Yc87BZZUO8MB+83WFboCb5/XJz92P95YHovFChcn92P5yOnvVydmdjOk+c+JBrErcAD9Wh/RSVS5WRElQXX7S4C0WFmSb/F5rxwnwRsxqiEQuaKip1LnK7Y4QFLJ27cSV8/m4WFNmloGbs13JRKNPn8g1OSPpk8FtsgwCYkNb6M0JsCJpByfmo9E0473lgSjISePs6ej8JOf7LcqFqC4/qScxKAwRPoAXXl4MADieN3jWwBgwG4IdOe6u/Qvfeg7G+iixs1rprEtt7YN9R6D7A3yp4YB+J0RDu4MGe0EYdlaxqZoVGyUExag02oFtXLfnazdDPzS+PkRHdTOUNh9JBhAi9CvY3RLH+YThhdkzdIE5gcF7PH0iFxVnVWa12tG21bn/ddkDQoiWpgbEhk5iSQd/3kFrqt+RYZE7wf1Ee3u7bsUjwFR9N7u/Ey0h6B5Vj7g8BZnEG5kZKbhyPl9XA3N/qxYH4MoUPsvZxag9fKqSManAhqe3lJBhEIG/uZu2nuX8z//krdSTzZQjesU6g6PoNkKH96Xf90YP/T7CWpquMgbvnKBwsAtWWpoa8FnOLoNGxHy6Z3BoDBmFg16d4toOdEePX5rU+P7wZjRdb+AdcvJ5wTi4xQWlqlxU89R8WzUhuCvPdEkHkciFWbCkpemqWUToWuhkIRltVoDg0BicUeUyLWvSPillPH0JVSW4UH4aHaxmBmyExqThXudVuE2eYXSfgYBF3a4Z6cl4O3omXgt0RX7ufnR2/oEa1efMDy4pOYV05WLEhk4ySgY/uQKLk/Yiq+AStn58QEcikqlqDXBwEmHegr91zbYCAei4g2ymHBpNM9bE88WUBMxkuXiOCH+WP4aM9GSAum2tRjVl0EhYH3zdt+nt3vJF8HnqOdaaBANk3hBY3F4EwBRu0f1e9W1Evk4pFIBrFyo4HQb70p39PqtMAk79AR/02yh6ekvx9JxIXeEOt46azl7V9nEliXnWAwFjK+47n4+DW5bh4BZwat8dx/shanEi9N3jAgBuk2Wc0uCLNWV4wnfOgE6NllGZqNtQhL7KiWQaQ3T8RqxI2oHw6CRWFVuXaKUoCp9uU5rVGYNgcEqJMEUUoxHQXT0WJ+3FnuIGbP34gM7GFHDsznTlQrwW6Ip7nVeZPKczqtwB1xMsGIeg0NH6OwoLso2uLcBWk+imxPrGE50JKRK5IP3gTxCLxWSMWSHyc/fj9+af8fxcBdw8p+jmva6etB2tGhSpjvP2mt24rZjpqrIl5ywenywbMGJYsGJuKIYJHeDt8zTuCcfi/Hf5Rvfs7LyFn378BieP7cNdUHB3exLDhA7o7GxD2pvz0Nl5C4pYJaY9M5eMLCuVEiNGPoJP097CqeMHcO/hxzFZ8hTu/vEH3lq+CKq8dHySuRLnv8tn+vPSE2XggrXw9pkGDL2Ln378Bm3trfAPiLBGCdGF1wJdodE0I3xJIm/uizHDmt0Vbt9JjS4SSoxrawRtB9Kawpacs7hYf42pg2C/e7ofVtc64lo1mh5Hb6QWDlhXcYtnux7NSWNa0UcuSuTkvRuzMTSaZnx/eDNDhnE+YbpIKCGDtcJ5tCvmv72L+XyuTAX5vGBOgt+sqJXYU3wViSn7WMmBAua909mw+zctQUfr71ZkVOvQ0arhLOTn4PQIfJ56jvk+JDoeWQWXui0OuXI+H68FukJ1/BhIDMJ6PU7yecGIjt8IALpxIcDGbcXMxDhxtFgXaxDwTn7Pz1UwE+b2tDesjBDUbezI3sSIyHmRsQC0PVrpB3AsZxucR7tiVeIGfKH6v4iO32hSany0NhyvBbp3WxxEMHhJEb7gLfjJFdBomqE6fozpuggA354qY5ZQ5sPjk2XM+ChV5SJnu9J6CKFSFTPR53E+YZz13WjRp9E0o6TkFABtVDM0OgnrPzlt0l2r0TQjt+AQkRRWy4kH8eIr2jy0yjPaYFyYIgrjfMJw5Xy+US2go1WDLcqFHG9leeWlfh8HFiAEhcYLFTi4pWvlGG0SX1eryLHeAcx3FedUzHcCAGNdPZhlXo0Rw8VhKLEnrNjj9IR0DvzkCpSqctF4oQoAkLBKySKJQLenNiaRs12JFVESg4Uitcf07zgQWOIUmRkpHCY/5z8LXZFIAQICZmOH7rsa1efA2+sYUZmfu58J6Sek5MDFdQKO52Xh26/2McZ5QNjrZFxZsdokEGhXNC1V5SK34BBWeU6B22QZQ5KjOkP721NlnF69xj1Q/QcLuF0pvBbozgnPG1a2cRsT002v2KtjctuRUKAgwLULFTxrPhNYq6RIVy7GhfLTzMpQ7AVy2KAr8bSL1FCWm7sHRmUSwFu+iPmk7aNquM8Ls2cwn87//E8AwOF96QyR/OUK7qwCbW7LMEIGq8bRnDSdnaCVEhpNM9OkzG2yDON8wpiJNHxJIrbknGX6xXYp1gOnLlvEhli4IJbR/z1Zfmb2PkOEXQuN16g+BwUBY2wBMFoAZE2WQ2dnJ66dOmmiJ5H94Ywql7ETHtepSd9+tU/3jCidvamdSKNXpLDynO7Pm7eIhBjr6oG12wowK2olnp4TCb6FwCdNGMPxHLU2NWCKbgETP7nCJtQioVCIR6fPQPnfNqL2YB4629vtmgwdrRo06Jbuoi1Kqf9CjpSgEwFLVbmDIu5k0eQ+03M6hVdmODCf7keu+wCpyuho16Dw5fkAgJnrk/H47Dl2Swh6Ga6u5hLapnKe7lN1lZAUEhb7MUv90j217hcsGKnuTsxxv7tYU2abkQWBNsbin7kJAHD2vVSceXMVWsor7Y4QDk4iJlXj3A8qZoysStzAVEIezclkvIwaTTPWxYfe79dnpxfvZzj7SuEWHITGwiK0VFThTMVquAUHYfz/vGJT7eO7wxjXSWioqcTRvelwHOmEIUJX/N78M5quNxgsEzxI5jOC/sKT8bFoLCxiPjcWFqGxsAhuwUF4Mj4WQt5WLrYFqX/XEsrGem7RoOtk7meruaFk2Pajke3oCEmcofessbAIx1+MQO3BPNh2Sop5nb7dvaWIjt+I7YerEB6ddF9naSIh+hmuYSGo2sm/KGHVzmzcKP0B3tGL4OwrtU2DCsCqxA04OlqMMzpJMcZ1EkaPdcfoibN0jSVEHLfM/cSALpjyyoxhzN90RwZ7wLmUTI7qxAe34CB4x/3VzqLyg68P74CpTOxFT0QiFx0Z7COD1X1BULf7NBYWofDl+To1yl4w+BSUASOEaLQbRCIXjPMJw9ptBXalsYknTDF736qd2Xbrph0MGOA15ii7NV/MUZuIGmVHEqKLBAK7IwNFURjhMb7Hx3HVKFIgZYOEsE8IBAI4jHm018dr1ahkokYRQtiKhAAeGt43taelogpnElbjXEomyaYlhLB2CQHccnjAIueyT28UIYSNiQjgkYct+6gZb9QgWtKWEILAbF/C3V/vWPy0LRVVuPzJl8TeJoSwPvy/W5bX+51lEm3QjyTgWHLuIhgIdNz41aLnk8TFwDUkGEKhI3m4hBDWh7a6yxY5jz2ljhNC2DBuNV/vs3rk/c4KuyouIoSwVXWpVYOWiqreE8Fm08MJIexTOtQ29tpOcI/k62JCQAhhpaAo4HLxNz22E6YmxeuWtSWviRDClh6wgDI7y9VZJsGUvynJunqEELaLa6fOmEWE8bFL4DZFQh4YIYRto+7Lf5j8fub6ZLg8O4e8CEII24e6vtqod4k2mAXkDRBC2AsaDhTxGsxe8bG6RSUJCCHsARSgvlLNMaadZRJMeeuvPaqvJiCEsJmnWv33TxkieLzyktZOIE+bEMIece3USbRUVGkT8MJCIBQKyUMhhLBPdLa3o+PGrwj+6iDplmGFGOA2NHZiQFACMtUQQhAQWD9IxRwBASEEAQEhBAEBIQQBASEEAQEhBAEBIQQBASEEAQEhBAEBIQQBASEEAQEhBAEBIQQBASEEAQEhBAEBIQQBASEEAQEhBAEBIQQBASEEAQEhBAEBIQQBASEEAQEhBAEBASEEAQEhBAEBIQQBASEEAQEhBAEBIQQBASEEAQEhBAEBIQQBASEEAQEhBAEBIQQBASEEAQEhBAEBIQQBASEEAQEhBAEBIQQBgS1B0G9npoDbmmu46zASQkfHQfsAag/mMX87eXpi6KPDIJ4whYyMAUBdXR0OHTmCmdOmISAgoEfH1dfXQyaTQSwWW/Sehty7d++epU52++Y1XC4pBQBU7cwGALgFB2GaMmHABjUAjA/ww1DR4xCYQfejzwdxPjvLJPDbnGHWsQR9w8qVK5GZmcl8joiIwPLly7slR2xsLLKzteNLKpUiauFCvJOYeP8kREt5JQCgtbYWAHCj9Ae0VFTx7ttYWIQRHuMxPsAPbY03jZ5zhNsohkx88JwfaUwQMeSj0VZ32SwSUjzbxvg9Y7NkKCkpwdy5cy16zpS0tF4NRrVajc8++4yzraqqCjKZrNvjjhw5wnyurKzExIkTB1Zl6mxvx/EXI3p9kaqd2Wiru4zGwiKj+/hnbjIY2OxZ2xgh+H7ACI/xRqVHd7hR+kO3+/REAhHwY/eePVCr1Qbb58+fb/SY4uJi5ObmGhz3yy+/IDAw0OT1iouLLUcIoaMjJHExRgesMTjLJACA4S5jcav5en+ZKgZw8vTkDHBj0otX+lVUdbu/k6cnnEc9zvtdeXk5lErlgAwqiUSCzZs3Wx0Z1Go1MlJTDbZfvHgRFy9eNHksWzqwpcSAG9WuIcG8hHCWSTgDyFkmgXf0Igz3dMO1whI8HhyAYU4iNBzM69HA7OsPoPrVY2D8/L/99htUKpXVDM6YmBhMmDQJ9+7cwZBhwwDA6N8nVSqL/LaNGzfySgdzVL7+frZmjxmBTkqw1SC34CBMVSagQM8wdZJK0fzdSVTtzGb2c18QBH/PTcw+NTmfc4nkK0Xo6SKAAlorK3EmYXWvJQT6mQwDcf6BwquvvtojD09fB2R5eTnHkKYNY/2Z3svLC25ubpz9Nm3a1O1x9PZRo0b1MyF0UqJszfvMQG4sLML4wD8Z7isAzr6XyjGspyYlABO056EAIOdz/hlXYJkfQJ/Pf2sG8/nuzWtoa7wJJ6kUEGi/1/cySeJi4K6zV1qbGjDigWEYKnqc+V2UDZEBAFatWmX24GlsbOyzqhQTE8PZFhERgby8PNTV1XGM45aWFpSWljJuVX2HgFgsRklJCcRiMZ544gmOqjVx4kTk5eX1/0QnEDpiuMtYtKCKM9Pr49qpk5zPM9cnQyAA1PXVUP9Yw2sgU+3taL1Qi9baWo4N0GcJQQHqK9VoOFDEGPX+mZvg7Cs1fSwF1Hy4HS0VVXCWSTDG7xm4hgR3G1MZOXIk5HK52QNMX2fmmxlN2RB9hSX17+6QnJzMuZ5YLEZWVhYAwMPDA3K5nJFAarUau/fswTuJiVCr1YiLi+OcKysriyHLkiVLsGbNGo6dUVJS0iPJ1ztCCIAn42M53qIxfs8Y2AaPTp8Bt+AgNBYWQRIXg4eGizgzsZhHqrC9WNM+yrCcDSEAhwwAcCZhNeYV/x8IhUKjxzbkddk8tKF9o/SHbmMUvr6+Zns0UlJSOC+SfrkDZZQPJNixAxpFRUWcwFpERARHJctITcU7iYnYvWcPZ+KQy+WIiOgaL8uWLeM8R7lcjpEjR/afhKAooPm7k6j78h8cQ9pZJjFwU7ZUVKFszfsY7jKW8fIYiM7ib0xe707Vf0yKBPWValT//VOju9TkfA7kfI4xfs/Ac34kpiYl4FbzdQ5x/525E1ONxSooive+p7z1V4u6Wmljtbtt/YmUtDTMnDbNrH0PHTpkMKjNRWpqKqZPn47MzExcvHgRu3btgq+vLwIDAw3sEi8vL4SEhGDBggUAgHcSEyEeMYJzLBtisRgRERFoa2vD6tWreyUZekQIgQDouPGrgSQw5jVqqahi1Cp6H1pi0AY57ZLlg8lYgAC4++sdkx4r+rvhLmOZIKK+JBvhMd6ovtWQl29wfv/MTdqUDhszInqSNnH23LleX0csFmPp0qVYunQpjhw5wpnh2di1axeWLl1qYHt4enpi586d+PHHH1FfX4/6+nrOPnK5HJ46VbukpITZ3tP0DrMlRF/h8qyMo7boDzg2YSzlnm0sLDIaDKQ9YHzb+aDv9ZLExRgNFloTLB25NgfGyACAGdRsVFRU9Po+T5w40SOJYbaEcPL05LhdjQW8aAOUHliSuBg4jHkULs/OAZBq9Brs6DIBwf2C2enfzr5SuEdGwj0yEuKnvU3O4m11lznEeegJrb/VLTjI6DE98Sw5+0oRfroIobp/+vDP3AT/zE3k7Q4ifJiejiFDhhj807cf5s6dy/m+u5QMS6PHXiZ1fTVOLUkwqb+z3bItFVU4E7UUs/dmmpQCwsmelr15VyeORLM0nDw9QVGw+nymnqgUH6anQ5mUdN/vWSqVIiMjg9fG6ev99eh11h7MM9CxaeOYlhj6KhONU0sSIImLwcz1yXjoiQmMj58hhFAIt+AgjPAY320ioJ7TiV+KjHaH83x3rf1DRwMt+L+t2NU9MZTrL10aFPc8atSoPnmS+kwIdb3WzamvJjnLJPD9YA3K/7aRs919vlat0pckVTuztUGx0e684meaMh4tTVd7lETYXRyiIS/PrAxWc+Hxyktae8hGGDFQM/7MadOQkpbGyY36o60NGzZs4Oynn1slHjHC0FnS2IiUlBSDfCtLELb710oB6h9rjJLBwUkEv60ZnEkUAMQTpmDe10c4qR5uwUFw9pWilifRTxsdFqDmw+09+gGmos0U1fNs1+5gy/US/YmAgACDWT0lJcVgPzq3iu2aZbtRAW1WrH5Ac+AkhECbw6Q/sFoqqlD48nyzL0RXzl07dZJXAlAAfkrL7PHgNSkh+mng2oLtYGxGZs+4+n9bKtsV0MYW+FLXW1tbERkZiSNHjiAhIWHA09vNe60CAW+KhtleIZkE05QJvDYIjYaDeWbbDeZKCGPE5EtINAa+rFtbkhADne1KIzk5mTcFPDKyK7aTmZmJF1980WAfsViM6dOnG2y/efNmn3OzzCsQEgrhGhIM15Bgg8o5/XoIY9vOpWSaHPA9LT4y9QNaa2txufgb3oE/wmM8nH2lTATbGEa4jWKyXK1RQnyYnm4w0zc0NBjsd+jQIZw9d85sCaEPepv+MfPnz4eHhwfvvZWUlBhNAfHy8uLkLcXFxRmoVtOnT+fNF7NEiazZr1Xo6GgwGzvLJPDfmoEzb67ieJn0t+m7YrtDT6rzKBPkMuXm7a7ewlQk2hokhLnGcm9zk9gSg09qPP3007yE4Mtc1bcrYmNjGelx8eJFA8O7PzG0r+zhM5Bru6mOcwsOMprLREe2zVaZ2tuNfmfMu2RuJoqxlBVLpLLYK5KTk02WiTo5OWFVcjJnm34TAZVKxRvks0QaSo8IoT8OWiqqDGZyvm2AtiaCliBPJhjOELP3ZsJZJoH7/Eg8NFzU7b00Vleh9mCeyeYHxkipT+zw00UIP11kSFIBrFZCDEbs3r2bI5GkUilv7cg7iYmQy+WQSqUoKyvD8uXLB5lR3Zud9eAyew4kcb9CHPgnCIWGZxoxYQpT3dYdurNHaCn0ZEIcyla/2+0Mb9SeoKzXy3TixAmz9qutreVNqOPDoUOHEBQUBCcnp2731W8nU1JSgmXLlhmoa8ZqP3bt2sWoXPpu10FDCD4bwjt6Eac+mm8bPYo8IyONz7o9UGdM2Qb09Z19paacZubZEz2QEJZKa1AmJfXqPPr95rrzHNXV1SEpKQlHjhxBTEwMUlNTTaZJ0wU+dHwgOTnZqNFsDGKxmLENUtLS4Ovra3RfU+fuz9SNPtsQTlKpWdsgMJ3vQPWAocaMXUlcDPw2Z/Bfvzc2gA3aEGq1Gh+mp2PGjBlMS5fs7GwEBATwukHVajVkMhmj6qjVamRnZ2PixImIjY01e/YOCAhgKuQiIiL61GmPTt3Q/2duoVO/SQiAW2pJ6+0NPAXe+hfSr83uiYTQ90S5BQfhqZhX8aCRXkl83OwuG3aE2yibsiHKy8uRlZVl1KtUWVkJPz8/fPHFF8zMXV5ejpiYGKO+/ezsbGRnZ0Mul2Pp0qUm6xwAbXltUVFRjyWLPm7evMlLxL4UMFnEhjDW1MtYJLqV1QJT3wagALTVV+Pur3dwuZsSU0AbPW+ru4zxgX+Ck6/U7N9gbl4T3abTWm0IWvf++uuvcezYsW4bgHl5eWHJkiWcwerr64vs7GxkZWXhyJEjRnsp0a5XLy8vJCQkQKFQGFW/TKlJ5qKysrLfCpv6LCF6cqHW2lqj8QUBtDlT5sYfhI6OvWqibE5nPnMkjD5ejYiwiMi2FGQymVlRW7pgX79skz2AfX19kZqail27dmHv3r1GyUXXOysUCqtVKfskIZxlEvixPEMCFmlKWYE5mkzjA/xMDnhj3QGHu4wdVLMy3714eHj0WRWwtHQICAjgJYVYLMZf/vIXvPHGG2bfs1gshlKphFKpxO7du6FUKg0khlQqZXol9SdoacaX7drXQGOfJYSA5zNFabNCDbbzpEI4yyTweOUlZtbnS/twXxBkMTLYSy4T3ciLTQqpVIply5aZVGnMwdKlS6FQKLB7zx5kpKZCrVYPGBkAwM3NjdddayolxFz0an0IcxpPaGdRwz05Pn9XJzg5u3MGmf4CJoz7tJfdLvS7fzt5ejI2h8AMNbCB73ip1GoMa7rh16sREf0iwerq6rBjxw588MEHcOzFwji7d++Guq2NmeX57pNeWIVdI8Gn4qnValRUVBiojj0hqUUXTOkxoQa4pUtvLkfpHUyC1LaN+0IIAoLBCrLoIgEBIQQBAT/+/wBIMvE6Kb5GWQAAAABJRU5ErkJggg=="></div> 
+      <div style="display: inline-block;border: 1px solid black;border-radius:5px;max-width:180px; max-height:180px;"> <img style="border-radius:10px; width:100%;height:100%;" src='https://www.szzd.uk/CcZbbeEY' > </div>
     </div>
+    <hr style="height: 2px;max-width:380px;background-color:#666;border: none; ">
+    <div style=" margin-bottom:15px;font-size:20px; ">扫码翻墙 &nbsp;免费安全&nbsp; 软件持续更新</div>
+    <div><a  style="margin-right:40px;" id="btn-install" href="javascript:"></a><a href="javascript:copyToClipboard();">复制本页链接</a></div>
   </div>
-  <img src='https://www.szzd.uk/CcZbbeEY' width='300px'><br>
-  扫码直接翻墙<br>
-  本页网址：<a href="http://www.szzd.org/fAZBa7j4" target="_blank">点击打开</a> <br>
-  <br>
-  <table>
-    <tr class=biaotr1>
-      <td colspan="3"><span> 大陆直连翻墙网址</span></td>
+  <table  class="szmjlink">
+    <tr  >
+      <td class=biaotr1><span> 大陆直连翻墙网址</span></td>
     </tr>
-    <tr class=biaotr2>
-      <td width="70%;" ><div id=mjmian>「神州明见主页」</div></td>
-      <td width="10%;" ><a id=szmjlink href="http://www.szzd.org/ucqy" target="_blank" >打开</a></td>
-      <td width="20%;"  style="text-align: center;"><a href="javascript:showQRCode('gjQR', szmjlink.href, 200);" onClick="openModal();">二维码</a></td>
-    </tr>
-    <tr class=biaotr3>
-      <td><div id=gjvideo>「干净世界视频」</div></td>
-      <td><a id=gjlink href="http://www.szzd.org/BMYPTkVs" target="_blank">打开</a></td>
-      <td style="text-align: center;"><a href="javascript:showQRCode('gjQR', gjlink.href, 200);" onClick="openModal();">二维码</a></td>
-    </tr>
-  </table>
-  <br>
-  <table>
-    <tr class=biaotr1>
-      <td colspan="2"  class=biaotr1><span> 安卓翻墙软件</span></td>
-    </tr>
-    <tr class=biaotr2>
-      <td width="85%;">「神州明见8.0」：可自定义访问干净世界频道</td>
-      <td width="15%;"><a href="http://www.szzd.org/BUWF2Fty" target="_blank" class="preload-download preloaded">下载</a></td>
-    </tr>
-    <tr class=biaotr3>
-      <td>「神州明见7.2 tv版」：神州明见的电视版，可以安装到网络机顶盒上，也可以在手机上使用</td>
-      <td><a href="http://www.szzd.org/ZZydQ" target="_blank" class="preload-download preloaded">下载</a></td>
-    </tr>
-    <tr class=biaotr2>
-      <td>「Chrome手机版」：将Chromium加入翻墙代码，实现翻墙功能</td>
-      <td><a href="http://www.szzd.org/kVrwY" target="_blank">下载</a></td>
-    </tr>
-    <tr class=biaotr3>
-      <td>「手机版自由门VPN」：可自由添加关注的干净世界频道</td>
-      <td><a href="http://www.szzd.org/uwYnTWWT" target="_blank" class="preload-download preloaded">下载</a></td>
-    </tr>
-  </table>
-  <br>
-  <table>
     <tr>
-      <td colspan="2"  class=biaotr1><span> 电脑翻墙软件</span></td>
-    </tr>
-    <tr class=biaotr2>
-      <td width="85%;">「自由门」</td>
-      <td width="15%;"><a href="http://www.szzd.org/oSYQTnXj" target="_blank" class="preload-download preloaded">下载</a></td>
-    </tr>
-    <tr class=biaotr3>
-      <td width="85%;">「无界」</td>
-      <td width="15%;"><a href="http://www.szzd.org/pWvtg.exe" target="_blank" class="preload-download preloaded">下载</a></td>
-    </tr>
-    </tr>
-    
-    <tr class=biaotr2>
-      <td width="85%;">「爱博电视」</td>
-      <td width="15%;"><a href="http://www.szzd.org/DjnNY.exe" target="_blank">下载</a></td>
+      <td  class="szmjlink" style="height:80px; font-size:18px" align="center"><a style="margin-right:60px;" id=szmjlink href="http://www.szzd.org/ucqy" target="_blank" >「神州明见主页」</a><a id=gjlink href="http://www.szzd.org/BMYPTkVs" target="_blank">「干净世界视频」</a></td>
     </tr>
   </table>
   <br>
-  <div align="left" style="max-width:800px; margin:0 auto;font-weight: bold;">*用翻墙软件可以浏览被中共封锁的国外网站，网络封锁严重时如果不能访问，可改时间再试，或尝试多个翻墙软件。如果有最新版本的翻墙软件，请及时下载。</div>
+  <table class="szmjlink">
+    <tr>
+      <td colspan="2"  class=biaotr2><span> 安卓翻墙软件</span></td>
+    </tr>
+    <tr>
+      <td  style="height:120px; font-size:18px" align="center"><div style="padding-bottom:20px;"><a style="margin-right:70px;" href="http://www.szzd.org/BUWF2Fty" target="_blank" class="preload-download" source="http://pick.szzd.me/files/app-release.apk" download="神州明见8.apk">「神州明见8.0」</a><a href="http://www.szzd.org/ZZydQ" target="_blank" class="preload-download" source="https://github.com/szmj0/update/raw/refs/heads/main/extras/szmjtv_v7.2.2025121701.apk" download="神州明见tv版7_2.apk">「神州明见7.2 tv版」</a></div><div><a style="margin-right:55px;" href="http://www.szzd.org/kVrwY" target="_blank">「Chrome手机版」</a><a href="http://www.szzd.org/uwYnTWWT" target="_blank">「手机版自由门VPN」</a></div>
+	  </td>
+    </tr>
+  </table>
+  <br>
+  <table class="szmjlink">
+    <tr>
+      <td class=biaotr2><span> 电脑翻墙软件</span></td>
+    </tr>
+    <tr>
+      <td style="height:80px; font-size:18px" align="center"><a style="margin-right:60px;" href="http://www.szzd.org/oSYQTnXj" target="_blank" class="preload-download preloaded" source="https://dongtaiwang.com/loc/software/fg/805/fg805p.exe" download="自由门.exe">「自由门」</a><a style="margin-right:60px;" href="http://www.szzd.org/pWvtg.exe" target="_blank" class="preload-download preloaded" source="https://wujieliulan.com/download/u2211.exe" download="无界.exe">「无界」</a><a href="http://www.szzd.org/DjnNY.exe" target="_blank">「爱博电视」</a>
+	  </td>
+    </tr>
+  </table>
+  <br>
+  <div align="left" style="min-height:30px;width:100%; margin:0 auto;color:#FFFFFF;background-color:#1c5986;border-radius:5px; "><div style="padding:5px;" align="center"><font color="#f9c374"><b>温馨提示</b>：</font>封锁严重时可换个时间再试，或更换翻墙软件。建议及时下载最新版翻墙软件。</div></div>
+ 
 </div>
 <br>
 <br>
@@ -123,7 +95,7 @@ span {font-size: 1.10em;font-weight: bold; color:#FFFFFF}
 <script>
 var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementById('gjlink'),text = document.getElementById('text'),gjimg = document.getElementById('gjimg'),gjname = document.getElementById('gjname');
 var hash = window.location.href;
-var match1 = hash.match(/#.*/);
+var match1 = hash.match(/#./);
 	//生成二维码
     function showQRCode(id, text, size){
         if(!window.QRCode){
@@ -146,10 +118,34 @@ if (match1) {
 szmjlink.href = szmjlink.href + match1[0];
 gjlink.href = gjlink.href + match1[0];
 }
+		//回调函数--当找到有效节点时触发。/
+		function FoundSite(site) {
+			// site形如 http://域名 或 https://域名，尾部不带/ /
+			window.szsite = site;
+			//处理链接
+			var szmjlink = document.querySelectorAll('.szmjlink');
+			for (var i = 0; i < szmjlink.length; i++) {
+				var alink = szmjlink[i].getElementsByTagName('a');
+				for (var j = 0; j < alink.length; j++) {
+					var lbnum = alink[j].href.lastIndexOf("/"),
+						lblinks = alink[j].href.substring(lbnum);
+					alink[j].href = window.szsite + lblinks;
+				}
+			 }
+		}
+//复制网址
+function copyToClipboard() {
+  var hash = window.location.href;
+  navigator.clipboard.writeText(hash).then(function() {
+    alert('网址已复制到剪贴板');
+  }, function(err) {
+    console.error('复制失败', err);
+  });
+}
 
 //修改大陆直连的网址介绍
 (function () {
-			var hash = location.hash || '' /*可以在这里设置默认值*/;
+			var hash = location.hash || '' //可以在这里设置默认值/;
 			var match = hash.match(/#(gj_\w+)$/);
 			if (match) {
 				var gjid = match[1];
@@ -213,13 +209,11 @@ var span = document.getElementsByClassName("close")[0];
 </body>
 </html>
 
-
-<style>.preloaded {font-weight:bold;}</style>
 <script>
 		var url = window.location.href;
 		var domain = url.match(/:\/\/(.[^/]+)/)[1];
 		var tld = domain.split('.').slice(-2).join('.');
-		if (tld == "www.szzd.org") {
+		if (tld == "www.shenzhouzhengdao.org") {
 			//处理缓存
 			window.addEventListener('load', function () {
 				navigator.serviceWorker.register("sw.js")
@@ -234,4 +228,5 @@ var span = document.getElementsByClassName("close")[0];
 				//$.preloadPage('a.preload-page', 'href');
 			});
 		}
+		console.log(tld);
 </script>
