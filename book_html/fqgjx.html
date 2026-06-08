@@ -7,7 +7,7 @@
 <script type="text/javascript" src="webjs.js"></script>
 <style>
 body{
-background-color:#9ec2d8;
+background-color:#4667ac;
 }
 a {	text-underline-offset: 0.3em;color: #0000ef;}
 a:hover {color: #800080}
@@ -16,7 +16,7 @@ table {width:100%;border-collapse: collapse; border-radius:5px;background-color:
 td {padding:5px;}
 .biaotr1 {background-color:#18a2f3;border-radius: 5px 5px 0 0;}
 .biaotr2 {background-color:#1092db;border-radius: 5px 5px 0 0;}
-span {padding:3px;font-size: 1.20em;font-weight: bold; color:#FFFFFF}
+span {padding:3px;font-size: 1.15em;font-weight: bold; color:#FFFFFF}
 .modal {
   display:none ; / 默认不显示 /
   position: fixed; 
@@ -59,11 +59,12 @@ span {padding:3px;font-size: 1.20em;font-weight: bold; color:#FFFFFF}
     </div>
     <hr id=hr1 style="height: 2px;width:80%;background-color:#666;border: none; ">
     <div style=" margin-bottom:15px;font-size:20px; ">扫码翻墙 &nbsp;免费安全&nbsp; 软件持续更新</div>
-    <div><a  class="jjright" style="margin-right:40px;" id="btn-install" href="javascript:"></a><a href="javascript:copyToClipboard();">复制本页网址</a></div>
+    <div style=" padding-bottom:10px;"><a  class="jjright" style="margin-right:40px;" id="btn-install" href="javascript:"></a><a href="javascript:copyToClipboard();">复制本页网址</a></div>
   </div>
+  <div id=cs></div>
   <table>
     <tr  >
-      <td class=biaotr1><span id=gjdz style="font-size: 1.25em;"> 大陆直连翻墙网址</span></td>
+      <td class=biaotr1 align="center"><span id=gjdz style="font-size: 1.25em;"> 大陆直连翻墙网址</span></td>
     </tr>
     <tr>
       <td  class="tdsize" style="height:80px; font-size:18px" align="center"><font class="szmjlink"><a  class="jjright" style="margin-right:90px;" id=szmjlink href="http://www.szzd.org/ucqy" target="_blank" >「神州明见主页」</a></font><font id=gjlink><a  href="http://www.szzd.org/7saBNUUq" target="_blank">「干净世界频道」</a></font></td>
@@ -72,17 +73,17 @@ span {padding:3px;font-size: 1.20em;font-weight: bold; color:#FFFFFF}
   <br>
   <table class="szmjlink">
     <tr>
-      <td colspan="2"  class=biaotr2><span> 安卓翻墙软件</span></td>
+      <td colspan="2"  class=biaotr2  align="center"><span> 安卓翻墙软件</span></td>
     </tr>
     <tr>
-      <td  class="tdsize szmjlink" style="height:120px; font-size:18px" align="center"><div style="padding-bottom:20px;"><a class="jjright" style="margin-right:100px;" href="http://www.szzd.org/BUWF2Fty" target="_blank" >「神州明见8.0」</a><a href="http://www.szzd.org/ZZydQ" target="_blank">「神州明见7.2 tv版」</a></div><div><a class="jjright" style="margin-right:75px;" href="http://www.szzd.org/kVrwY" target="_blank">「Chrome手机版」</a><a href="http://www.szzd.org/uwYnTWWT" target="_blank">「手机版自由门VPN」</a></div>
+      <td  class="tdsize szmjlink" style="height:120px; font-size:18px" align="center"><div style="padding-bottom:20px;"><a class="jjright" id='szmjapp80' style="margin-right:100px;" href="http://www.szzd.org/BUWF2Fty" target="_blank" >「神州明见8.0」</a><a href="http://www.szzd.org/ZZydQ" target="_blank">「神州明见7.2 tv版」</a></div><div><a class="jjright" style="margin-right:75px;" href="http://www.szzd.org/kVrwY" target="_blank">「Chrome手机版」</a><a href="http://www.szzd.org/uwYnTWWT" target="_blank">「手机版自由门VPN」</a></div>
 	  </td>
     </tr>
   </table>
   <br>
   <table class="szmjlink">
     <tr>
-      <td class=biaotr2><span> 电脑翻墙软件</span></td>
+      <td class=biaotr2  align="center"><span> 电脑翻墙软件</span></td>
     </tr>
     <tr>
       <td class="tdsize" style="height:80px; font-size:18px" align="center"><a class="jjright" style="margin-right:80px;" href="http://www.szzd.org/oSYQTnXj" target="_blank">「自由门」</a><a class="jjright" style="margin-right:60px;" href="http://www.szzd.org/pWvtg.exe">「无界」</a><a href="http://www.szzd.org/DjnNY.exe" target="_blank">「爱博电视」</a>
@@ -90,7 +91,7 @@ span {padding:3px;font-size: 1.20em;font-weight: bold; color:#FFFFFF}
     </tr>
   </table>
   <br>
-  <div align="left" style="min-height:30px;width:100%; margin:0 auto;color:#FFFFFF;background-color:#1c5986;border-radius:5px; "><div style="padding:5px;" align="center"><font color="#f9c374"><b>温馨提示</b>：</font>封锁严重时可换个时间再试，或更换翻墙软件。建议及时下载最新版翻墙软件。</div></div>
+  <div align="left" style="min-height:30px;width:100%; margin:0 auto;color:#FFFFFF;background-color:#163066;border-radius:5px; "><div style="padding:5px;" align="center"><font color="#f9c374"><b>温馨提示</b>：</font>封锁严重时可换个时间再试，或更换翻墙软件。建议及时下载最新版翻墙软件。</div></div>
  
 </div>
 <div id=textarea></div>
@@ -121,7 +122,7 @@ span {padding:3px;font-size: 1.20em;font-weight: bold; color:#FFFFFF}
 //关闭代理时的导航条
 		var force_btmnv = 0;
 //生成二维码
-	
+	var QRadd = 'http://www.szzd.org/fAZBa7j4';
     function showQRCode(id, text, size){
         if(!window.QRCode){
             return;
@@ -139,16 +140,12 @@ span {padding:3px;font-size: 1.20em;font-weight: bold; color:#FFFFFF}
 			});
 		}
     }
-showQRCode('szmjQR', 'https://bit.ly/D1111111', 175);
-var szmjQRimg = document.getElementById('szmjQR').querySelector('img');
-szmjQRimg.style.width = '100%';
-szmjQRimg.style.height = '100%';
-
-
-
+	showQRCode('szmjQR', QRadd , 175);
+	
 var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementById('gjlink'),text = document.getElementById('text'),gjimg = document.getElementById('gjimg'),gjname = document.getElementById('gjname');
 var hash = window.location.href;
 var match1 = hash.match(/#./);
+var fqQR1 = '';
 if (match1) {
 szmjlink.href = szmjlink.href + match1[0];
 gjlink.href = gjlink.href + match1[0];
@@ -157,6 +154,8 @@ gjlink.href = gjlink.href + match1[0];
 		function FoundSite(site) {
 			// site形如 http://域名 或 https://域名，尾部不带/ /
 			window.szsite = site;
+			QRadd = window.szsite + '/fAZBa7j4' + fqQR1;
+			showQRCode('szmjQR', QRadd , 175);
 			//处理链接
 			var szmjlink = document.querySelectorAll('.szmjlink');
 			for (var i = 0; i < szmjlink.length; i++) {
@@ -168,9 +167,13 @@ gjlink.href = gjlink.href + match1[0];
 				}
 			 }
 		}
+var szmjQRimg = document.getElementById('szmjQR').querySelector('img');
+szmjQRimg.style.width = '100%';
+szmjQRimg.style.height = '100%';
+
 //复制网址
 function copyToClipboard() {
-	var hash = 'https://bit.ly/D1111111';
+	var hash = QRadd;
 	var result = hash.substring(0, 5);
 	if (result === "https") {
 		navigator.clipboard.writeText(hash).then(function() {
@@ -202,17 +205,20 @@ function copyToClipboard() {
 (function () {
 			var hash = location.hash || '' //可以在这里设置默认值/;
 			var match = hash.match(/#(gj_\w+)$/);
+
 			if (match) {
 				var gjid = match[1];
 				var gjids = gjid.split('_');
 				var cjsonp = $('img#c').attr('jsonp');
-				var qrimg = document.getElementById("qrimg"),gjdz = document.getElementById("gjdz"),gjname = document.getElementById("gjname"),gjleft = document.getElementById("gjleft"),szmjlink = document.getElementById("szmjlink"),gjlink = document.getElementById("gjlink");
+				var qrimg = document.getElementById("qrimg"),gjdz = document.getElementById("gjdz"),gjname = document.getElementById("gjname"),gjleft = document.getElementById("gjleft"),szmjlink = document.getElementById("szmjlink"),gjlink = document.getElementById("gjlink"),szmjapp80 = document.getElementById("szmjapp80"),szmjQR = document.getElementById("szmjQR");
 				cjsonp = (cjsonp ? cjsonp + ',' : '') + gjid;
 				$('img#c').attr('jsonp', cjsonp);
 				
 				window['jsonpCallback_' + gjid] = function (json) {
 					if (json && json.result && json.data && json.data.list && json.data.list.length > 0) {
 						var title = '';
+						var fqQR = QRadd +'#' +gjid;
+						fqQR1 = '#' +gjid;
 						if (gjid.length == 33) {
 							var v = json.data.list[0], icon = v.channel.icon;
 							if (icon && (icon.indexOf('cloudokyo.cloud/') !== -1 || icon.indexOf('edgefare.net/') !== -1)) {
@@ -226,6 +232,9 @@ function copyToClipboard() {
 						gjleft.style.minHeight = '395px';
 						szmjlink.href = 'http://www.szzd.org/ucqy#' + gjid;
 						gjlink.innerHTML ='<a  href="' + szsite + '/channel/' + gjids[1] + '" target="_blank" noproxy>「干净世界频道」</a>';
+						showQRCode('szmjQR',fqQR, 175);
+						hashadd = fqQR; 
+						szmjapp80.href = 'http://www.szzd.org/zEbxBb2Q';
 					}
 				};
 			}
@@ -257,7 +266,6 @@ var span = document.getElementsByClassName("close")[0];
     closeModal();
   }
 }
-
 
 </script>
 </body>
