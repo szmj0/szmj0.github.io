@@ -200,17 +200,18 @@ gjlink.href = gjlink.href + match1[0];
 
 //复制网址
 function copyToClipboard() {
-	var hash = QRadd;
 	var result = hash.substring(0, 5);
+	console.log(hash);
+	console.log(QRadd);
 	if (result === "https") {
-		navigator.clipboard.writeText(hash).then(function() {
+		navigator.clipboard.writeText(QRadd).then(function() {
     		alert('网址已复制到剪贴板');
  			 }, function(err) {
    			 console.error('复制失败', err);
  		});
 	} else {
 		const textArea = document.createElement('textarea');
- 		textArea.value = hash;
+ 		textArea.value = QRadd;
  		textArea.style.position = 'fixed'; // 防止滚动条跳动
  		textArea.style.top = '0';
   		textArea.style.left = '0';
@@ -293,7 +294,7 @@ var span = document.getElementsByClassName("close")[0];
   }
 }
 
-console.log('ver:26061201cs');
+console.log('ver:26061202cs');
 </script>
 </body>
 </html>
