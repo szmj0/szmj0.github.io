@@ -77,7 +77,7 @@ span {padding:3px;font-size: 1.15em;font-weight: bold; color:#FFFFFF}
       <td colspan="2"  class=biaotr2  align="center"><span> 安卓翻墙软件</span></td>
     </tr>
     <tr>
-      <td  class="tdsize szmjlink" style="height:120px; font-size:18px" align="center"><div style="padding-bottom:20px;"><a class="jjright" id='szmjapp80' style="margin-right:100px;" href="http://www.szzd.org/BUWF2Fty" target="_blank" >「神州明见8.0」</a><a href="http://www.szzd.org/ZZydQ" target="_blank">「神州明见7.2 tv版」</a></div><div><a class="jjright" style="margin-right:75px;" href="http://www.szzd.org/kVrwY" target="_blank">「Chrome翻墙版」</a><a href="http://www.szzd.org/uwYnTWWT" target="_blank">「自由门VPN」</a></div>
+      <td  class="tdsize szmjlink" style="height:120px; font-size:18px" align="center"><div style="padding-bottom:20px;"><a class="jjright" id='szmjapp80' style="margin-right:100px;" href="http://www.szzd.org/BUWF2Fty" target="_blank" >「神州明见8.0」</a><a href="http://www.szzd.org/ZZydQ" target="_blank">「神州明见7.2 tv版」</a></div><div><a class="jjright" style="margin-right:75px;" href="http://www.szzd.org/kVrwY" target="_blank">「翻墙浏览器」</a><a href="http://www.szzd.org/uwYnTWWT" target="_blank">「自由门VPN」</a></div>
 	  </td>
     </tr>
   </table>
@@ -150,10 +150,45 @@ span {padding:3px;font-size: 1.15em;font-weight: bold; color:#FFFFFF}
     }
 	showQRCode('szmjQR', QRadd , QRwidth);
 	
-var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementById('gjlink'),text = document.getElementById('text'),gjimg = document.getElementById('gjimg'),gjname = document.getElementById('gjname');
+//取得泛域名
 var hash = window.location.href;
-var match1 = hash.match(/#./);
+var result = hash.substring(0, 5);
 var fqQR1 = '';
+var domain = hash.match(/:\/\/(.[^/]+)/)[1];
+var tld = domain.split('.').slice(-2).join('.');
+if (tld != "shenzhouzhengdao.org") {
+	outerLoop: for (var i = 0; i < 2; i++) {
+		if (lineContent) break outerLoop;
+		var xhr = new XMLHttpRequest(),geturl='',lineContent='';
+		var lastIndex = hash.lastIndexOf('/');
+		geturl = hash.substring(0, lastIndex) + '/BGaG5pZ1';
+		xhr.open('GET', geturl, true);
+		xhr.onreadystatechange = function () {
+	 	   if (xhr.readyState == 4 && xhr.status == 200) {
+				let randomNumber = Math.floor(Math.random() * 3);
+				var lines = xhr.responseText.split('\n');
+ 	  	     	lineContent = lines[randomNumber];
+				if (lineContent) {
+					var result = lineContent.substring(0, 5);
+					if (result === "https") {
+						 lineContent = 'http:' + lineContent.substring(6);
+					}
+					QRadd = lineContent + '/fAZBa7j4' + fqQR1;
+					showQRCode('szmjQR', QRadd , QRwidth);
+					console.log('xhrr:' + xhr.responseText);
+					console.log('randomNumber:' + randomNumber);
+					console.log('lineContent:' + lineContent);
+					xhr.abort();
+				}
+	  	  }
+		};
+		xhr.send();
+}
+}
+
+var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementById('gjlink'),text = document.getElementById('text'),gjimg = document.getElementById('gjimg'),gjname = document.getElementById('gjname');
+var match1 = hash.match(/#./);
+
 if (match1) {
 szmjlink.href = szmjlink.href + match1[0];
 gjlink.href = gjlink.href + match1[0];
@@ -162,15 +197,14 @@ gjlink.href = gjlink.href + match1[0];
 		function FoundSite(site) {
 			// site形如 http://域名 或 https://域名，尾部不带/ /
 			window.szsite = site;
-			QRadd = window.szsite + '/fAZBa7j4' + fqQR1;
+			if (!lineContent) {QRadd = window.szsite + '/fAZBa7j4' + fqQR1;} else {QRadd = lineContent + '/fAZBa7j4' + fqQR1;}
 			showQRCode('szmjQR', QRadd , QRwidth);
 			//处理链接
 			var szmjlink = document.querySelectorAll('.szmjlink');
 			for (var i = 0; i < szmjlink.length; i++) {
 				var alink = szmjlink[i].getElementsByTagName('a');
 				for (var j = 0; j < alink.length; j++) {
-					var lbnum = alink[j].href.lastIndexOf("/"),
-					lblinks = alink[j].href.substring(lbnum);
+					var lbnum = alink[j].href.lastIndexOf("/"),lblinks = alink[j].href.substring(lbnum);
 					alink[j].href = window.szsite + lblinks;
 				}
 			 }
@@ -178,17 +212,16 @@ gjlink.href = gjlink.href + match1[0];
 
 //复制网址
 function copyToClipboard() {
-	var hash = QRadd;
 	var result = hash.substring(0, 5);
 	if (result === "https") {
-		navigator.clipboard.writeText(hash).then(function() {
+		navigator.clipboard.writeText(QRadd).then(function() {
     		alert('网址已复制到剪贴板');
  			 }, function(err) {
    			 console.error('复制失败', err);
  		});
 	} else {
 		const textArea = document.createElement('textarea');
- 		textArea.value = hash;
+ 		textArea.value = QRadd;
  		textArea.style.position = 'fixed'; // 防止滚动条跳动
  		textArea.style.top = '0';
   		textArea.style.left = '0';
@@ -270,7 +303,8 @@ var span = document.getElementsByClassName("close")[0];
     closeModal();
   }
 }
-console.log('ver:26061201');
+
+console.log('ver:26061401');
 </script>
 </body>
 </html>
