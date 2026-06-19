@@ -60,7 +60,8 @@ span {padding:3px;font-size: 1.15em;font-weight: bold; color:#FFFFFF}
 	<div  style=" position: relative;margin-top:-32px;font-size:28px;font-weight: bold; z-index: 1; "><div id=gjname1 style="display: inline-block; padding:0 20px; background-color:#FFFFFF"><font style="color:#ae3d46;">翻墙</font>工具箱</div></div>
 
     <div style=" margin:15px 0;font-size:20px; ">扫码翻墙 &nbsp;免费安全&nbsp; 软件持续更新</div>
-    <div style=" padding-bottom:25px;"><a  class="jjright" style="margin-right:40px;" id="btn-install" href="javascript:"></a><a href="javascript:copyToClipboard();">复制本页网址</a></div>
+    <div id=copyURL style="padding-bottom:25px;"><a  class="jjright" style="margin-right:40px;" id="btn-install" href="javascript:"></a><a href="javascript:copyToClipboard();">复制本页网址</a></div>
+	<div id=backupURL style="display:none;padding-bottom:10px;">如本页链接失效请访问：<a href="https://bit.ly/D1111111" noproxy>备用链接</a></div>
   </div>
   <div id=cs></div>
   <table>
@@ -77,7 +78,17 @@ span {padding:3px;font-size: 1.15em;font-weight: bold; color:#FFFFFF}
       <td colspan="2"  class=biaotr2  align="center"><span> 安卓翻墙软件</span></td>
     </tr>
     <tr>
-      <td  class="tdsize szmjlink" style="height:120px; font-size:18px" align="center"><div style="padding-bottom:20px;"><a class="jjright" id='szmjapp80' style="margin-right:100px;" href="http://www.szzd.org/BUWF2Fty" target="_blank" >「神州明见8.0」</a><a href="http://www.szzd.org/ZZydQ" target="_blank">「神州明见7.2 tv版」</a></div><div><a class="jjright" style="margin-right:75px;" href="http://www.szzd.org/kVrwY" target="_blank">「翻墙浏览器」</a><a href="http://www.szzd.org/uwYnTWWT" target="_blank">「自由门VPN」</a></div>
+      <td  class="tdsize szmjlink" style="height:120px; font-size:18px" align="center">
+	  	<table id=azlink style="max-width:490px;" >
+		<tr align="center">
+			<td ><a id='szmjapp80' href="http://www.szzd.org/BUWF2Fty" target="_blank" >「神州明见8.0」</a></td>
+			<td><a href="http://www.szzd.org/ZZydQ" target="_blank">「神州明见7.2 tv版」</a></td>
+		</tr>
+		<tr align="center">
+			<td><a href="http://www.szzd.org/kVrwY" target="_blank">「翻墙浏览器」</a></td>
+			<td><a href="http://www.szzd.org/uwYnTWWT" target="_blank">「自由门VPN」</a></td>
+		</tr>
+		</table>
 	  </td>
     </tr>
   </table>
@@ -87,7 +98,7 @@ span {padding:3px;font-size: 1.15em;font-weight: bold; color:#FFFFFF}
       <td class=biaotr2  align="center"><span> 电脑翻墙软件</span></td>
     </tr>
     <tr>
-      <td class="tdsize" style="height:80px; font-size:18px" align="center"><a class="jjright" style="margin-right:80px;" href="http://www.szzd.org/oSYQTnXj" target="_blank">「自由门」</a><a class="jjright" style="margin-right:60px;" href="http://www.szzd.org/pWvtg.exe">「无界」</a><a href="http://www.szzd.org/DjnNY.exe" target="_blank">「爱博电视」</a>
+      <td class="tdsize" style="height:80px; font-size:18px" align="center"><a class="jjright" style="margin-right:70px;" href="http://www.szzd.org/oSYQTnXj" target="_blank">「自由门」</a><a class="jjright" style="margin-right:70px;" href="http://www.szzd.org/pWvtg.exe">「无界」</a><a href="http://www.szzd.org/DjnNY.exe" target="_blank">「爱博电视」</a>
 	  </td>
     </tr>
   </table>
@@ -123,6 +134,7 @@ span {padding:3px;font-size: 1.15em;font-weight: bold; color:#FFFFFF}
 		$("#gjname").css("padding", "0 5px");
 		$("#gjname").css("font-size", "20px");
 		$("#gjtopin").css("width", "90%");
+		$("#azlink").css("max-width", "350px");
 	}
 	
 
@@ -193,6 +205,11 @@ if (match1) {
 szmjlink.href = szmjlink.href + match1[0];
 gjlink.href = gjlink.href + match1[0];
 }
+/*回调函数--当没找到有效节点时触发。如果存在此函数，就在找不到节点时执行此函数，否则就显示默认的提示信息。*/
+		function NotFoundSite() {
+			$("#copyURL").css("padding-bottom", "15px");
+			$("#backupURL").css("display", "block");		
+		}
 		//回调函数--当找到有效节点时触发。/
 		function FoundSite(site) {
 			// site形如 http://域名 或 https://域名，尾部不带/ /
@@ -304,7 +321,7 @@ var span = document.getElementsByClassName("close")[0];
   }
 }
 
-console.log('ver:26061401');
+console.log('ver:26061901');
 </script>
 </body>
 </html>
