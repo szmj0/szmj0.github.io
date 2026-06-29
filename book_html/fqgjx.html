@@ -161,9 +161,8 @@ var QRadd = 'http://www.szzd.org/fAZBa7j4',webname = '/fAZBa7j4',zlpd = '',zlzt=
 				var linkid = document.getElementById('linkid'),gjname = document.getElementById('gjname');
 				linkid.innerHTML = '「' + weburl + '」';
 				gjname.innerHTML = weburl;
-				linkid.href =  'http://www.szzd.org//' + match2[2];
-				webname = webname + hash;
-				QRadd = QRadd + hash;
+				QRadd = linkid.href =  'http://www.szzd.org//' + match2[2];
+				webname = '/' + match2[2];
 				gjdz.innerHTML = ' 大陆直连翻墙网址--' + weburl;
 				document.title = weburl + '-翻墙工具箱';
 				zlzt = '_urzl';
@@ -197,7 +196,8 @@ var QRadd = 'http://www.szzd.org/fAZBa7j4',webname = '/fAZBa7j4',zlpd = '',zlzt=
 						gjdz.innerHTML =v.channel.name + ' -- 大陆直连翻墙网址';
 						szmjlink.href = 'http://www.szzd.org/ucqy#' + gjid;
 						gjlink.innerHTML = '<a  href="' + szsite + '/channel/' + gjids[1] + '" target="_blank" noproxy>「干净世界频道」</a>';
-						QRadd = fqQR + 'gjzl';
+						QRadd =szsite + '/channel/' + gjids[1];
+						webname = '/channel/' + gjids[1];
 						zlzt = '_gjzl';
 						szmjapp80.href = 'http://www.szzd.org/zEbxBb2Q';
 						if (match2[2] == 'gjzl') {
@@ -228,7 +228,7 @@ var QRadd = 'http://www.szzd.org/fAZBa7j4',webname = '/fAZBa7j4',zlpd = '',zlzt=
 			});
 		}
     }
-	var QRadd1 = QRadd + zlzt;
+	var QRadd1 = QRadd;
 	showQRCode('szmjQR', QRadd1 , QRwidth);
 	
 //取得泛域名
@@ -254,10 +254,10 @@ if (tld != "shenzhouzhengdao.org") {
 					if (result === "https") {
 						 lineContent = 'http:' + lineContent.substring(6);
 					}
-					QRadd = lineContent + webname + fqQR1;
+					QRadd = lineContent + webname;
 					console.log(QRadd);
 					if  (tld == "szzd.org") window.location.replace(QRadd);
-					QRadd1 = QRadd + zlzt;
+					QRadd1 = QRadd;
 					showQRCode('szmjQR', QRadd1 , QRwidth);
 					console.log('xhrr:' + xhr.responseText);
 					console.log('randomNumber:' + randomNumber);
@@ -287,8 +287,8 @@ var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementB
 		function FoundSite(site) {
 			// site形如 http://域名 或 https://域名，尾部不带/ /
 			window.szsite = site;
-			if (!lineContent) {QRadd = window.szsite + webname + fqQR1;} else {QRadd = lineContent + webname + fqQR1;}
-			QRadd1 = QRadd + zlzt;
+			if (!lineContent) {QRadd = window.szsite + webname;} else {QRadd = lineContent + webname;}
+			QRadd1 = QRadd;
 			showQRCode('szmjQR', QRadd1 , QRwidth);
 			//处理链接
 			var szmjlink = document.querySelectorAll('.szmjlink');
@@ -302,7 +302,9 @@ var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementB
 			 //直链跳转
 			 if (zlpd) {
 			 var gjQR = document.getElementById('gjQR');
+			 //保留窗口跳转
 			 //gjQR.innerHTML = '<p>节点载入成功，请点击：</p><input type="submit" name="Submit" value="打开网站" onclick="script:window.open(window.szsite + zlpd);closeModal();" />';
+			 //不保留窗口跳转
 			 gjQR.innerHTML = '节点载入成功，跳转中...';
 			 window.location.replace(window.szsite + zlpd);
 
@@ -365,7 +367,7 @@ var span = document.getElementsByClassName("close")[0];
   }
 }
 
-console.log('ver:26062501');
+console.log('ver:26062801');
 </script>
 </body>
 </html>
