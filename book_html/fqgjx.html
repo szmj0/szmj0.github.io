@@ -75,7 +75,7 @@ span {padding:3px;font-size: 1.15em;font-weight: bold; color:#FFFFFF}
     <tr>
       <td  class="tdsize" style="height:80px; font-size:18px" align="center"><table id=azlink1 style="max-width:490px;" >
           <tr align="center">
-            <td style="width:50%"><font id=gjlink><font class="szmjlink"><a id=linkid href="http://www.szzd.org/7saBNUUq" target="_blank">「干净世界频道」</a></font></font></td>
+            <td style="width:50%"><font id=gjlink><font ><a href="https://j.mp/ddw2288" target="_blank" noproxy>「动态网」</a></font></font></td>
             <td style="width:50%"><font class="szmjlink"><a id=szmjlink href="http://www.szzd.org/ucqy" target="_blank" >「神州明见主页」</a></font></td>
           </tr>
         </table></td>
@@ -155,15 +155,15 @@ var QRadd = 'http://www.szzd.org/fAZBa7j4',webname = '/fAZBa7j4',zlpd = '',zlzt=
 (function () {
 			var hash = location.hash || '' //可以在这里设置默认值/;
 			var match = hash.match(/#(gj_\w+)$/);
-			var match2 = hash.split('_'),gjdz = document.getElementById("gjdz");
+			var match2 = hash.split('_'),gjdz = document.getElementById("gjdz"),gjlink =  document.getElementById("gjlink");
 			if (match2[0].includes('#ur')) {
 				var weburl = decodeURIComponent(match2[1]);
-				var linkid = document.getElementById('linkid'),gjname = document.getElementById('gjname');
-				linkid.innerHTML = '「' + weburl + '」';
+				var gjname = document.getElementById('gjname');
 				gjname.innerHTML = weburl;
-				QRadd = linkid.href =  'http://www.szzd.org//' + match2[2];
+				QRadd = 'http://www.szzd.org/' + match2[2];
 				webname = '/' + match2[2];
-				gjdz.innerHTML = ' 大陆直连翻墙网址--' + weburl;
+				gjlink.innerHTML = '<font class="szmjlink" ><a href="http://www.szzd.org/' + match2[2] +' " target="_blank" noproxy>「'+ weburl +'」</a></font>';
+				gjdz.innerHTML = weburl +  '--大陆直连翻墙网址' ;
 				document.title = weburl + '-翻墙工具箱';
 				zlzt = '_urzl';
 				if (match2[3] == 'urzl') {
@@ -175,7 +175,7 @@ var QRadd = 'http://www.szzd.org/fAZBa7j4',webname = '/fAZBa7j4',zlpd = '',zlzt=
 				var gjid = 'gj_' + match2[1];
 				var gjids = gjid.split('_');
 				var cjsonp = $('img#c').attr('jsonp');
-				var qrimg = document.getElementById("qrimg"),gjdz = document.getElementById("gjdz"),gjname = document.getElementById("gjname"),szmjlink = document.getElementById("szmjlink"),gjlink = document.getElementById("gjlink"),szmjapp80 = document.getElementById("szmjapp80"),linkid = document.getElementById('linkid'),szmjQR = document.getElementById("szmjQR");
+				var qrimg = document.getElementById("qrimg"),gjdz = document.getElementById("gjdz"),gjname = document.getElementById("gjname"),szmjlink = document.getElementById("szmjlink"),gjlink = document.getElementById("gjlink"),szmjapp80 = document.getElementById("szmjapp80"),szmjQR = document.getElementById("szmjQR");
 				}
 				cjsonp = (cjsonp ? cjsonp + ',' : '') + gjid;
 				$('img#c').attr('jsonp', cjsonp);
