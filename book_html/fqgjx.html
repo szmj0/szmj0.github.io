@@ -75,7 +75,7 @@ span {padding:3px;font-size: 1.15em;font-weight: bold; color:#FFFFFF}
     <tr>
       <td  class="tdsize" style="height:80px; font-size:18px" align="center"><table id=azlink1 style="max-width:490px;" >
           <tr align="center">
-            <td style="width:50%"><font id=gjlink><font ><a href="https://j.mp/ddw2288" target="_blank" noproxy>「动态网」</a></font></font></td>
+            <td style="width:50%"><font id=gjlink><font class="szmjlink"><a id=dtw href="http://www.szzd.org/vDceQd4j" target="_blank" noproxy>「动态网」</a></font></font></td>
             <td style="width:50%"><font class="szmjlink"><a id=szmjlink href="http://www.szzd.org/ucqy" target="_blank" >「神州明见主页」</a></font></td>
           </tr>
         </table></td>
@@ -151,7 +151,7 @@ span {padding:3px;font-size: 1.15em;font-weight: bold; color:#FFFFFF}
 		var force_btmnv = 0;
 		
 //频道订制
-var QRadd = 'http://www.szzd.org/fAZBa7j4',webname = '/fAZBa7j4',zlpd = '',zlzt='';
+var QRadd1 = QRadd = 'http://www.szzd.org/fAZBa7j4',webname = '/fAZBa7j4',zlpd = '',zlzt='';
 (function () {
 			var hash = location.hash || '' //可以在这里设置默认值/;
 			var match = hash.match(/#(gj_\w+)$/);
@@ -195,8 +195,10 @@ var QRadd = 'http://www.szzd.org/fAZBa7j4',webname = '/fAZBa7j4',zlpd = '',zlzt=
 						gjname.innerHTML =  v.channel.name;
 						gjdz.innerHTML =v.channel.name + ' -- 大陆直连翻墙网址';
 						szmjlink.href = 'http://www.szzd.org/ucqy#' + gjid;
-						gjlink.innerHTML = '<a  href="' + szsite + '/channel/' + gjids[1] + '" target="_blank" noproxy>「干净世界频道」</a>';
+						gjlink.innerHTML = '<a  href="' + szsite + '/channel/' + gjids[1] + '" target="_blank">「干净世界频道」</a>';
 						QRadd =szsite + '/channel/' + gjids[1];
+						QRadd1 = szsite + webname + '#' + gjid;
+						console.log(QRadd1);
 						webname = '/channel/' + gjids[1];
 						zlzt = '_gjzl';
 						szmjapp80.href = 'http://www.szzd.org/zEbxBb2Q';
@@ -228,8 +230,7 @@ var QRadd = 'http://www.szzd.org/fAZBa7j4',webname = '/fAZBa7j4',zlpd = '',zlzt=
 			});
 		}
     }
-	var QRadd1 = QRadd;
-	showQRCode('szmjQR', QRadd1 , QRwidth);
+	showQRCode('szmjQR', QRadd , QRwidth);
 	
 //取得泛域名
 var hash = window.location.href;
@@ -257,8 +258,7 @@ if (tld != "shenzhouzhengdao.org") {
 					QRadd = lineContent + webname;
 					console.log(QRadd);
 					if  (tld == "szzd.org") window.location.replace(QRadd);
-					QRadd1 = QRadd;
-					showQRCode('szmjQR', QRadd1 , QRwidth);
+					showQRCode('szmjQR', QRadd , QRwidth);
 					console.log('xhrr:' + xhr.responseText);
 					console.log('randomNumber:' + randomNumber);
 					console.log('lineContent:' + lineContent);
@@ -280,16 +280,17 @@ var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementB
 
 /*回调函数--当没找到有效节点时触发。如果存在此函数，就在找不到节点时执行此函数，否则就显示默认的提示信息。*/
 		function NotFoundSite() {
+			var dtw =  document.getElementById("dtw");
 			$("#copyURL").css("padding-bottom", "15px");
-			$("#backupURL").css("display", "block");		
+			$("#backupURL").css("display", "block");	
+			if (dtw) dtw.href = 'https://j.mp/ddw2288';
 		}
 		//回调函数--当找到有效节点时触发。/
 		function FoundSite(site) {
 			// site形如 http://域名 或 https://域名，尾部不带/ /
 			window.szsite = site;
 			if (!lineContent) {QRadd = window.szsite + webname;} else {QRadd = lineContent + webname;}
-			QRadd1 = QRadd;
-			showQRCode('szmjQR', QRadd1 , QRwidth);
+			showQRCode('szmjQR', QRadd , QRwidth);
 			//处理链接
 			var szmjlink = document.querySelectorAll('.szmjlink');
 			for (var i = 0; i < szmjlink.length; i++) {
@@ -313,7 +314,9 @@ var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementB
 
 //复制网址
 function copyToClipboard() {
+	var match = hash.match(/#(gj_\w+)$/);
 	var result = hash.substring(0, 5);
+	if (match) QRadd = QRadd1;
 	if (result === "https") {
 		navigator.clipboard.writeText(QRadd).then(function() {
     		alert('网址已复制到剪贴板');
