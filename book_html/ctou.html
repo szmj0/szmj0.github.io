@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>中文转Unicode代码</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0">
+<script type="text/javascript" src="webjs.js"></script>
+</head>
+<body>
+<h2 align="center">代码中的中文转Unicode码</h2>
+<p align="center">
+  <textarea id="webtest" cols="80" rows="15"></textarea>
+</p>
+  <div align="center">
+    <input type="submit" name="Submit" value="提交" onClick="chineseToUnicode()">
+  </div>
+<p align="center">
+  <textarea id="outtext" cols="80" rows="15"></textarea>
+</p>
+<p align="center">
+<input type="submit" name="Submit" value="复制以上代码" onClick="copyToClipboard()">
+</p>
+<script>
+function chineseToUnicode() {
+    var webtest = document.getElementById('webtest');
+	var outtext = document.getElementById('outtext');
+    var text =  webtest.value;
+    var str = text.split('\n'); // 使用 '\n' 分割行
+	let result = '';
+	for (let j = 0; j < str.length; j++) {
+   	 	for (let i = 0; i < str[j].length; i++) {
+      		let char = str[j].charAt(i);
+			if (/[\u4e00-\u9fff]/.test(char)) { // 判断是否是中文
+				let hexNumber = char.charCodeAt(0).toString(10).padStart(4, '0') ; // 待转换的10进制数
+ 				result += '\&#' + hexNumber + ';';
+			} else {
+        	    result += char;
+      	 	 }
+  		}
+		result += '\n'
+	}
+    outtext.value = result;
+}
+//复制代码
+function copyToClipboard() {
+	var outtext = document.getElementById('outtext');
+	var hash = location.hash || '' //可以在这里设置默认值
+	var result = hash.substring(0, 5);
+	var QRadd = outtext.value;
+	if (result === "https") {
+		navigator.clipboard.writeText(QRadd).then(function() {
+    		alert('网址已复制到剪贴板');
+ 			 }, function(err) {
+   			 console.error('复制失败', err);
+ 		});
+	} else {
+		const textArea = document.createElement('textarea');
+ 		textArea.value = QRadd;
+ 		textArea.style.position = 'fixed'; // 防止滚动条跳动
+ 		textArea.style.top = '0';
+  		textArea.style.left = '0';
+  		textArea.style.opacity = '0'; // 隐藏元素
+  		document.body.appendChild(textArea);
+  		try {
+   			 textArea.select(); // 选中内容
+   			 document.execCommand('copy'); // 执行复制命令
+  			  alert('网址已复制到剪贴板');
+ 			 } catch (error) {
+   			 console.error('复制失败:', error);
+  		} finally {
+   			 document.body.removeChild(textArea); // 清理临时元素
+ 		 }
+	}
+}
+
+</script>
+</body>
+</html>
+
