@@ -234,8 +234,9 @@ function jmpset() {
 //频道订制
 var QRadd1 = QRadd = 'http://www.szzd.org/fAZBa7j4',webname = '/fAZBa7j4',zlpd = '';
 (function () {
-			var hash = location.hash|| '' //可以在这里设置默认值/;
-			if (!hash.includes("#")) hash = appurl;
+		var hash = location.hash|| '' //可以在这里设置默认值/;
+		if (!hash.includes("#")) hash = appurl;
+		if (hash) {
 			//var match = hash.match(/#(gj_\w+)$/);
 			var match2 = hash.split('_'),gjdz = document.getElementById("gjdz"),gjlink =  document.getElementById("gjlink");
 			if (match2[0].includes('#ur')) {
@@ -296,8 +297,9 @@ var QRadd1 = QRadd = 'http://www.szzd.org/fAZBa7j4',webname = '/fAZBa7j4',zlpd =
 					zlpd ='/channel/' + gjids[1];
 				}
 			}
-		})();
-		loadWeb();
+		}
+})();
+loadWeb();
 //生成二维码
 	
 	var QRwidth = topmain.offsetWidth /2.5;
@@ -426,6 +428,7 @@ function jmpzl() {
    				 if (seconds <= -1) {
      			    clearInterval(timerId); // 倒计时结束时停止
 					jmptime.innerHTML = '请稍候...';
+					closeModal();
 					if (jmpid) window.location.href = window.szsite + jmpid; else window.location.href = window.szsite + zlpd;
    				 }
 			}, 1000);
