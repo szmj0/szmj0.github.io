@@ -35,6 +35,7 @@ span {padding:3px;font-size: 1.15em;font-weight: bold; color:#FFFFFF}
   padding: 20px;
   border: 1px solid #888;
   width: 200px; 
+  line-height:2;
 }
 </style>
 </head>
@@ -42,13 +43,44 @@ span {padding:3px;font-size: 1.15em;font-weight: bold; color:#FFFFFF}
 <div id="myModal" class="modal" align="center">
   <div class="modal-content">
     <div class="close"  align="right"></div>
-    <div id=gjQR>节点载入中，请稍候...</div>
+	<div id=gjQR>
+      <div align="left" style="position: relative;"> <img style="position: absolute;top: -20px;right: -20px;width:22px;" src="data:image/webp;base64,UklGRkQFAABXRUJQVlA4TDcFAAAvHUAHEE2QDVCmCqOI/kc1p0mXaRcG0rZNRcK2XyyY4iF0pahtI4k/xbmT1wJYAP0PTCThlw+APAKR5dBCZ9t207bzjjGWj23bthknpVXalVPZdlKxS5XStm2uvYJtrLXmULH5E94zV7Q1oxmnoGvb2rE9W+u6n/djFdu1k/PNQdioMlKjsvXbeN/n2hLcNpIkSYrIqu49+v8fnXsyw64iyXaVfgEBDMG/MQykg4D7MwHNf/MCXEkKkDIUAuisVQHwgiTgD3gC6u5OSSr2Ztutqb7oZpHw8DaRgCIQCBGFlVBaJlesJjKhjASou/tHwCIV+KDjAsv5f17uWW8DOvxo3nA2sPmSA76bn8LRfoDlB22pqYYVDvtjeW+JHCC7SVaJR9BitvPqx+X7BpCm2QqjNLAOg4zFVBiKMXRBezGJBvQKy33rbes/y0NL5ARJI8aABJqmppSMpTHFOH4zwCBdTRdsYAtaGWQtge3nf5yQjoOmrXoDhy/ba0ulATl7aJPj3YHA0hi1OIrgX1PD0KzQJUPRFgvMkAn+0YU+R+zRaHhhMiosjgtSEAiQNs7KeH9V3jUqZVEy/jKoJMyQL+zRth6jTMGk2ERxqBQpw49muzQFRigvDxRenZEWCp2X7YZegkTZEZerlED6b01CXy6WT7dC2nRE1LBRIGqiqX9q6rI9vcJnO8JtlJe6fdNIBs3T8ZRNBgBfGLNL36Q4FkFYNejv9s7G8P+jKXHjBR1963LslXbMzeWAR8sbc3m6y6dzOXgr7j31cA2/vnn75lPG5wzUEAREvsOtAOCQsxQtUEK5jEmtnzyIisTFl7D4aRn7/iHz7VbIUU2RU8HAyn23D849Hf7tTZBDCSDSG3IBVgIUlETglTC+2UQ9RxRFDRX7Xi34EfgZakAOkbz62NOSvxAIBGRoLRAUKHAUbarDo4Qtv41zLpemRBRFjYwdt7XuYYh5AJCJERORBTEAGWOAFChICzj8KEJ4SzZa8uxhnxuqqYiiqI5RLUgKIB3oDYjtVnRF2fA8iECBApH9csNP2HUb1QNRFEUAdEohCCQA2v/BGC02mUOWqinFRuZLyX5furfeK19PauUKGiGI2UFYtCq3ZKFJNLUyv75kvy3Ez1jzAIUFPIiiIeu4a9+x5S8VswF0VDIC0YQaUD6wFSJgnBryCbZpVWZEh6hRI62aKBESES3fgYhk8woNM0jKDp1op4IGBdCiodRCkGUhgWKQTBBHPNeO55AZDP4HVkDhR9DaEPNwMwDo2Zr7sAUBdGHq779KDJI+ygUPHcKgP0vOw1PQSC6ACbZHYRlqqJUy5AIUCRhugDQd8/78goD0BYZZlgcP30Ixte5uUeAJ//54e7RWxgJBYYlDMlV6M3rhr1/0jF9jEEC9UDEatoOvvz9mvvhy/+ZLK0mQ4yn9JJUo7Hma/eTDGY+/VK0PZAEiETBESv7/OPX/X/NffFq90fL7X1qNJUIr1rAN6WYBAEOxcbnz9Mtj+yBKiNgmhBzlRcq9449P9r2IzQWAtpDt2wbgCgGQSReNpX5xKAVAEiJkJ1VQnH5ciFyIXiS1t2c8bMAGAqArhcvjE15rpCUSUIKoiuwI5LAlEgRQex4JgnTCs0F9CWQAiOwmx09j0xy51SXIVkmwGA5wQCCIGcaIVF9sDdQWZue2bsYkCwQAINsAXLrJ/+eoMxNXbm01MzDJAM8IK55GgpAdCWUqKiMZywbmj8MTpIf0CoA3YAHmzz/LMChn+WAIwXbRQIGkAyWdP/9MTIwaLAIA" onClick="closeModal();"> 翻墙成功后(下次打开生效):<br>
+        <div style="padding-left:20px">
+          <input type="radio" id="toolbox" name="applink" value="toolbox" onClick="selectInfo(this.value)" >
+          <label for="toolbox"> 留在首页</label>
+          <br>
+          <input type="radio" id="szmjmain" name="applink" value="szmjmain" onClick="selectInfo(this.value)">
+          <label for="szmjmain"> 跳转到神州明见主页</label>
+          <br>
+		  <!-- 干净世界
+		  <input type="radio" id="yuenshuo" name="applink" value="yuenshuo" onClick="selectInfo(this.value)">
+          <label for="yuenshuo"> 跳转到宇恩说</label>
+		  <br>
+		  -->
+          <div  style="padding:5px 0;font-size:16px;">无法跳转请：<a href="javascript:location.reload();">刷新节点</a></div>
+          <div align="center" style="padding-top:10px;">
+            <input type="submit" value="关闭" onClick="closeModal();">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id=gjQR1 style="display:none">
+      <div id=gjQR2>节点载入成功，跳转中...</div>
+      <div id=jmptime>3</div>
+      <button id="cancelButton">取消跳转</button>
+    </div>
+    <div id=gjQR3 style="display:none"> 翻墙节点载入中，请稍候...<br><div id=jstime>0</div><a href="javascript:location.reload();">刷新节点</a>
+    </div>
     <div id=text style="padding:5px; "></div>
   </div>
 </div>
 <div align="center" style="max-width:800px; margin:0 auto;padding:10px;">
   <div align="center"  style="position: relative;margin-bottom:20px; padding-top:30px;max-width:480px;border-radius:10px;background-color:#FFFFFF;z-index: 6; ">
     <div style=" position: relative;margin-bottom:-25px;font-size:24px;font-weight: bold; z-index: 5; ">
+		<div style="position: absolute;top: -30px;right: 8px;height:30px;font-size:15px;color:#000000;font-weight: normal;" >
+        <div style="display: inline-block;cursor: pointer;" onClick="javascript:location.reload();"><div style="display: flex; align-items: center;"><img style="width:17px;vertical-align:bottom;" src="data:image/webp;base64,UklGRnoCAABXRUJQVlA4TG4CAAAvHUAHELXInrbPkJ3uiW3bdnJl27Zt27avUmX7zrZt206OuerZzvkT4u+ga6/yC7Y6ZwIQtG0bpzt/ylfQto3En+MoZPcQ8ARYGAuZe9B+mk3dqalqZHVR02k3vSdl7rbwLRDfwkBkAYNpetNTLg+JvyrBa/RHQgG4cIc5ABNuCIgrXfFEBEpwCfnBAP4BENUkMIkkugFgGCArjsGJI0gJRAGQRtrJarmAJ3iGK7JRuiCjMMAwiC/bQOSNxWQhIlcywBDEMuPkJcj0PWbJb2jEk+NC1VDET5EHCgr+Ij0OCDl9VnIDhoNcppmgrFIWhOMvcpgbIMnHKCoMGkA5S91HXDDDJYaEkvQNSSVMtMZnNQIMGkOEPmF5gYMXZRIgrbyHXDBaA9rhCDEwBz0NSQehPcDBDRE+TycAGyHlgaaAuLh1i/Zgz7g/QuodtsC9V/ZIZGSk+yxZiEJUhZQHvYHwLfQj+EEmGN+0/kjtKDGSIqkhoiQmjnQXD8icRDIkwecRVj2CuJXxB8nOA4BlqiHBEMNoZtAXwSDpkgDi4D45cBMTs2GB/GaAG9QW5RCRVF6KXHhWgBvshIUaEgCNyuIFmQA0BIMhKCcu1YiQ0CT8QKOyvIBzH9AADBqx5TxIVaN4OC5bJeqBRh5shzP7fcXAoCOwSIjUYL8jIFo4gAZKyxLchh+Ift3FCqmECBgOMF2ISAUSEdHyiSPghjlA3Ce3KWlKnrwmngMwwx1ExwKxwEE50ElUBuAyDBMAiPjnAkrIASGBhS8gWjf/NUwjispSBIKEXy2MMj+pJql6qoiV1cpkFVA11Rg6rILIQqZu"> 刷新节点</div></div>&nbsp;
+        <div style="display: inline-block;cursor: pointer;"   onclick="jmpset();"><div style="display: flex; align-items: center;"><img style="width:17px;vertical-align:bottom;" src="data:image/webp;base64,UklGRnADAABXRUJQVlA4TGMDAAAvHUAHEC/msG0bSXL/Be97tjDj3NbAsG3bSN5/4N5rk2HbtpG8/8C91yabNpIkGUNRWP7Q/gsvUeS2bYOcki66z1AyIYEECQEAQEJQsoCSAAkBKPmU/Eo2DDAqm0qyLaAkWEBJgQCKeL8PAG6BbIBblWazaFvR7vf/KhC8KeWrtmKe601/8yWclN//A26d1wWA+3mA9/v8/h/IJpv3+zRJNm5lo2RBwK2mBEoWNNwN6tbmNufkuvWZan3DFGZTwHHOgkRt285Gmnf/TZrNTP753vnHtm17bdu2bdu2bWuMI2vnHCL6PwHhZuiQxHP9fX39VzKCzdDhYSSpYZOY8bm2orLi3TKQPmiSDDMkXd1eBmLhE0Dh5joQJaMiHJLGkI535MvXicDcZ6LFursaaP/0+XikL4DrHXuZv7J3MlY+d7Wou1swsntD5pMz4tAYzaMvC4BVXYe/bgOp1nw71LEJSHtyIkobg7EdWYgQTDi43BNSnMUHp0EikPRnBoyxy7+vgJAAhCQFACmY/7veNoaY2LMaDCieJwyIhQOzQGNITOqaYJEUqKRkC0LSbuuYC6EJAYAjR0FqTLnw6vXFOUqT2H8aAIITpi+ct+LrClCw+/fOluZtP/cooZr7c828hTNTzr1/8vTxVk+opvQ2AQpVHQtAcdY/evrk7eWgOmgXmmJd2gWSxJaHjlDghlql/f0V0ELSS37TrPxU4+dsl6Roq+hff5USPzf5bVOg+s/Zjp/Yxf+CKmApCMW+th1+2PjI1RQoC4V911/eunNjjSNUc7qroRRKfi0DxV569c6tFw/Sl65bvfnbEkVRe75vbmzY8GW/JVTTf25fvW5ZbjAAHD4KUmP+7Q8f7i2zPBIHTgHAoCHR3jHNIilwsnNcCElrTMckkMYQ7d2bIfQX1xUGxOreCaAxvtKvG6FJBQhJCgBSsPxnjW0MxnUkI4Jo3TvXJ6TY0/eNhkSo6N+zYYyOPPkkTWHR/1M/1g8j1dKfJztWwYq7eT7WM4ZOxJknafN752Ht0xEi6vYOTOpZHn/raoyPxpA+Hv/ycxYw71moFuvuKmD8j49nY2wGoBM5uQ7EoifDLRu31oGomhrjI2nCSFLDIjH7Q2lhUeHrFSBteCQZFm6GDk693Pn3b+f9vEEzdDgA"><font style=" bottom:31px;"> 跳转设置</font></div> </div>
+      </div>
       <div id=gjname style="display: inline-block; padding:0 20px; background-color:#FFFFFF">神州明见</div>
     </div>
     <div id=topmain style="display: flex;align-items: center; margin:10px;max-width:380px;min-height:234px;justify-content: center;border: 3px solid black;  ">
@@ -64,8 +96,9 @@ span {padding:3px;font-size: 1.15em;font-weight: bold; color:#FFFFFF}
       <div id=gjname1 style="display: inline-block; padding:0 20px; background-color:#FFFFFF"><font style="color:#ae3d46;">翻墙</font>工具箱</div>
     </div>
     <div id=textsm style=" margin:15px 0;font-size:20px; ">扫码翻墙 &nbsp;免费安全&nbsp; 软件持续更新</div>
-    <div id=copyURL style="padding-bottom:15px;font-size:18px;"><a  class="jjright" style="margin-right:40px;" id="btn-install" href="javascript:"></a><a class="jjright" href="javascript:copyToClipboard();">复制本页网址</a></div><div  style="padding-bottom:15px;font-size:16px;"><a href="javascript:location.reload();">刷新翻墙节点</a></div>
-    <div id=backupURL style="display:none;padding-bottom:10px;font-size:16px;">如本页链接失效请访问：<a href="https://bit.ly/D1111111" noproxy>备用链接</a></div>
+    <div id=copyURL style="padding-bottom:15px;font-size:18px;"><a  class="jjright" style="margin-right:40px;" id="btn-install" href="javascript:"></a><a class="jjright" href="javascript:copyToClipboard();">复制本页网址</a></div>
+    <div id=backupURL style="display:none;padding-bottom:10px;font-size:16px;line-height: 1.5;"><font style=" padding-bottom:20px;font-size:20px;">加载节点失败!</font><br>
+      请尝试：<a href="javascript:location.reload();">刷新翻墙节点</a> <br>或访问：<a href="https://bit.ly/D1111111" noproxy>备用链接</a></div>
   </div>
   <div id=cs></div>
   <table>
@@ -80,8 +113,12 @@ span {padding:3px;font-size: 1.15em;font-weight: bold; color:#FFFFFF}
             <td style="width:50%"><font id=gjwsurl><a href="http://www.szzd.org/WtV1A" target="_blank">「干净世界」</a></font></td>
           </tr>
           <tr align="center"  >
-            <td style="width:50%"><font id=gjlink><font class="szmjlink"><a id=dtw href="http://www.szzd.org/vDceQd4j" target="_blank">「动态网」</a></font></font></td>
+            <td style="width:50%"><font id=gjlink><font class="szmjlink"><a href="http://www.szzd.org/ssenbaKl" target="_blank">「干净世界时政」</a></font></font></td>
             <td style="width:50%"><font class="szmjlink"><a id=szmjlink href="http://www.szzd.org/ucqy" target="_blank">「神州明见主页」</a></font></td>
+          </tr>
+		  <tr align="center"  >
+            <td style="width:50%"><font class="szmjlink"><a id=dtw href="http://www.szzd.org/vDceQd4j" target="_blank">「动态网」</a></font></td>
+            <td style="width:50%"><font class="szmjlink"><a href="http://www.szzd.org/viWAt" target="_blank">「退党网」</a></font></td>
           </tr>
         </table></td>
     </tr>
@@ -116,12 +153,50 @@ span {padding:3px;font-size: 1.15em;font-weight: bold; color:#FFFFFF}
   </table>
   <br>
   <div align="left" style="min-height:30px;width:100%; margin:0 auto;color:#FFFFFF;background-color:#163066;border-radius:5px; ">
-    <div id=textbottom style="padding:5px;font-size:18px;" align="center"><font color="#f9c374"><b>温馨提示</b>：</font>封锁严重时可换个时间再试或更换翻墙软件。建议及时下载最新版翻墙软件。</div>
+    <div id=textbottom style="padding:5px;font-size:18px;" align="center" class="szmjlink"><font color="#f9c374"><a href="http://www.szzd.org/KeeTNXWd" style="text-decoration: none;" target="_blank"><font color="#f9c374">留言及反馈</font></a></div>
   </div>
 </div>
 <div id=textarea></div>
 <img src="" style="display:none;" id="c" rel="YUhSMGNITTZMeTlrYVdObVpHdG1ZbkZ3ZEdOdExtTnNiM1ZrWm5KdmJuUXVibVYwTHl4b2RIUndjem92TDJRek5YQmxOV2RoWVhCcWVqZ3lMbU5vWVc1c2FTNXpkRzl5WlM5Q1VXTmxRVVl6Yml4b2RIUndjem92TDJReVp6aHRhakY2YURscWJYcG1MbU5vWVc1NmRTNXpjR0ZqWlM4ME1VVlFSanN4TWpzeE93PT0=" nov="1" pwa="1" >
 <script>
+//标题处理：翻墙工具箱
+let character = String.fromCodePoint(32763)+String.fromCodePoint(22681)+String.fromCodePoint(24037)+String.fromCodePoint(20855)+String.fromCodePoint(31665);
+document.title = character;
+//载入缓存
+var appurl = null,jmp = '',jmptxt = '',js = null,jmpid = '';
+if (!localStorage.getItem('selectjmp')) {
+	$('#toolbox').prop('checked', true);
+	 localStorage.setItem('selectjmp', 'toolbox');
+	 openModal();
+} else {
+	jmp =  localStorage.getItem('selectjmp');
+	$('#'+jmp).prop('checked', true);
+	if (jmp == 'toolbox') {appurl = '';jmptxt = '';} 
+	if (jmp == 'szmjmain') {appurl = '#ur_神州明见_ucqy_urzl';jmpid = '/ucqy';jmptxt = '跳转到神州明见主页...';}
+	//跳转干净世界写法 
+	//if (jmp == 'yuenshuo') {appurl = '#gj_1ia1f56e0pp3ITT9GWpQjVVgf1ph0c_gjzl';jmpid = '/channel/1ia1f56e0pp3ITT9GWpQjVVgf1ph0c';jmptxt = '跳转到宇恩说...';}
+}
+
+$("#gjQR").css("display", "none");
+$("#gjQR1").css("display", "none");
+$("#gjQR3").css("display", "block");
+var jstime = document.getElementById("jstime"),seconds = 1;
+timerId = setInterval(function() {
+   			 	jstime.innerHTML = seconds;
+   				 seconds++; 
+			}, 1000);
+openModal();
+
+function selectInfo(n) {
+	localStorage.setItem('selectjmp', n);
+}
+function jmpset() {
+	$("#gjQR").css("display", "block");
+	$("#gjQR1").css("display", "none");
+	$("#gjQR3").css("display", "none");
+	openModal();
+}
+//localStorage.clear();
 //调整窄屏（手机）显示效果
 	var width = window.innerWidth || document.documentElement.clientWidth;
 	var jjright = document.getElementsByClassName("jjright"),tdsize = document.getElementsByClassName("tdsize"),spansize = document.querySelectorAll("span"),toolbox = document.getElementById('toolbox'),gjtopimg = document.getElementById("gjtopimg"),gjtopimg1 = gjtopimg.querySelector('img'),topmain = document.getElementById("topmain");
@@ -159,8 +234,9 @@ span {padding:3px;font-size: 1.15em;font-weight: bold; color:#FFFFFF}
 //频道订制
 var QRadd1 = QRadd = 'http://www.szzd.org/fAZBa7j4',webname = '/fAZBa7j4',zlpd = '';
 (function () {
-			var hash = location.hash || '' //可以在这里设置默认值/;
-			var match = hash.match(/#(gj_\w+)$/);
+			var hash = location.hash|| '' //可以在这里设置默认值/;
+			if (!hash.includes("#")) hash = appurl;
+			//var match = hash.match(/#(gj_\w+)$/);
 			var match2 = hash.split('_'),gjdz = document.getElementById("gjdz"),gjlink =  document.getElementById("gjlink");
 			if (match2[0].includes('#ur')) {
 				var weburl = decodeURIComponent(match2[1]);
@@ -171,8 +247,7 @@ var QRadd1 = QRadd = 'http://www.szzd.org/fAZBa7j4',webname = '/fAZBa7j4',zlpd =
 				gjlink.innerHTML = '<font class="szmjlink" ><a href="http://www.szzd.org/' + match2[2] +' " target="_blank" noproxy>「'+ weburl +'」</a></font>';
 				gjdz.innerHTML = weburl +  '--大陆直连翻墙网址' ;
 				document.title = weburl + '-翻墙工具箱';
-				if (match2[match2.length-1] == 'urzl') {
-					openModal();
+				if ((match2[match2.length-1] == 'urzl' ) || appurl ) {
 					zlpd = '/' + match2[2];
 				}
 			}
@@ -210,16 +285,15 @@ var QRadd1 = QRadd = 'http://www.szzd.org/fAZBa7j4',webname = '/fAZBa7j4',zlpd =
 							gjwAndurl.style.display = 'table-row';
 							websurl.innerHTML = '<font class="szmjlink"><a  href="' + szsite + '/' + match2[2] + '" target="_blank">「' + v.channel.name + '」</a></font>';
 							gjwsurl.innerHTML = '<a  href="' + szsite + '/channel/' + gjids[1] + '" target="_blank">「干净世界频道」</a>';
-							gjlink.innerHTML = '<font class="szmjlink"><a id=dtw href="http://www.szzd.org/vDceQd4j" target="_blank">「动态网」</a></font>';
+							gjlink.innerHTML = '<font class="szmjlink"><a href="http://www.szzd.org/ssenbaKl" target="_blank">「干净世界时政」</a></font>';
 							webname = '/fAZBa7j4' + '#' + gjid + '_' + match2[2];
 							QRadd = QRadd1 = szsite + webname;
 							console.log( webname);
 						}
 					}	
 				};
-				if (match2[match2.length-1] == 'gjzl') {
-							openModal();
-							zlpd ='/channel/' + gjids[1];
+				if (match2[match2.length-1] == 'gjzl' || appurl) {
+					zlpd ='/channel/' + gjids[1];
 				}
 			}
 		})();
@@ -296,7 +370,8 @@ var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementB
 		function NotFoundSite() {
 			var dtw =  document.getElementById("dtw"),szmjlink = document.getElementById("szmjlink"),szmjapp80 = document.getElementById("szmjapp80"),szmjTV = document.getElementById("szmjTV") ;
 			$("#copyURL").css("padding-bottom", "15px");
-			$("#backupURL").css("display", "block");	
+			$("#backupURL").css("display", "block");
+			closeModal();	
 			if (dtw) dtw.href = 'ht' + 'tps:/' + '/j.m' + 'p/ddw2288';
 			szmjlink.href = 'htt' + 'ps' + '://bi' + 't.ly/D12345678';
 			szmjapp80.href = 'htt' + 'ps' + '://'+ 'j.m' + 'p/szmjapp';
@@ -305,6 +380,7 @@ var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementB
 		//回调函数--当找到有效节点时触发。/
 		function FoundSite(site) {
 			// site形如 http://域名 或 https://域名，尾部不带/ /
+			closeModal();
 			window.szsite = site;
 			if (!lineContent) {QRadd = window.szsite + webname;} else {QRadd = lineContent + webname;}
 			showQRCode('szmjQR', QRadd , QRwidth);
@@ -317,17 +393,50 @@ var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementB
 					alink[j].href = window.szsite + lblinks;
 				}
 			 }
-			 //直链跳转
+
+			//直链跳转
 			 if (zlpd) {
+				const navEntry = performance.getEntriesByType('navigation');
+				if (navEntry && navEntry[0].type !== 'back_forward') {
+ 					 jmpzl();
+				}
+			 }
+		}
+var timerId = null;
+function jmpzl() {
 			 var gjQR = document.getElementById('gjQR');
+			 var gjQR1 = document.getElementById('gjQR1');
+			 var gjQR2 = document.getElementById('gjQR2');
+			 var jmptime = document.getElementById('jmptime');
 			 //保留窗口跳转
 			 //gjQR.innerHTML = '<p>节点载入成功，请点击：</p><input type="submit" name="Submit" value="打开网站" onclick="script:window.open(window.szsite + zlpd);closeModal();" />';
 			 //不保留窗口跳转
-			 gjQR.innerHTML = '节点载入成功，跳转中...';
-			 window.location.replace(window.szsite + zlpd);
+			 $("#gjQR").css("display", "none");
+			 $("#gjQR1").css("display", "block");
+			 $("#gjQR3").css("display", "none");
+			 gjQR2.innerHTML = jmptxt;
+			 openModal();
+			 gjQR.style.display = 'none';
+			 gjQR1.style.display = 'block';
+			 document.getElementById('cancelButton').addEventListener('click', cancelTimer);
+			 let seconds = 2; // 倒计时秒数
+			 timerId = setInterval(function() {
+   			 	jmptime.innerHTML = seconds;
+   				 seconds--; // 减少秒数
+   				 if (seconds <= -1) {
+     			    clearInterval(timerId); // 倒计时结束时停止
+					jmptime.innerHTML = '请稍候...';
+					if (jmpid) window.location.href = window.szsite + jmpid; else window.location.href = window.szsite + zlpd;
+   				 }
+			}, 1000);
 
-			 }
-		}
+}
+
+// 取消延时函数
+function cancelTimer() {
+        clearInterval(timerId);
+		closeModal();
+}
 
 //复制网址
 function copyToClipboard() {
@@ -363,10 +472,11 @@ function copyToClipboard() {
 var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
  
-function openModal() {
+function openModal(d) {
 var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
   modal.style.display = "block"; // 显示模态框
+ if (d == 1) modal.addEventListener('click', closeModal); else modal.removeEventListener('click', closeModal);
 }
  
 function closeModal() {
@@ -378,7 +488,7 @@ var span = document.getElementsByClassName("close")[0];
 span.onclick = function() {
   closeModal(); // 点击关闭按钮关闭模态框
 }
- 
+/*
 window.onclick = function(event) { // 点击模态框外部关闭模态框（可选）
 var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
@@ -386,8 +496,8 @@ var span = document.getElementsByClassName("close")[0];
     closeModal();
   }
 }
-
-console.log('ver:26071401');
+*/
+console.log('ver:26081601');
 </script>
 </body>
 </html>
