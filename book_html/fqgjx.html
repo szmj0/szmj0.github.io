@@ -157,7 +157,7 @@ video:focus { outline: none; outline-offset: 0; }
       <td class=biaotr1 align="center"><span id=gjdz> 大陆直连翻墙网址</span></td>
     </tr>
     <tr>
-      <td  class="tdsize" style="height:80px; font-size:18px" align="center">
+      <td id=ptlink2 class="tdsize" style="height:80px; font-size:18px" align="center">
 	  <table id=azlink1 style="max-width:490px;" >
 	  	  <tr id=gjwAndurl align="center" style="display:none" >
             <td style="width:50%"><font id=websurl><font class="szmjlink"><a  href="http://www.szzd.org/t6gbvh2G" target="_blank">「看中国」</a></font></font></td>
@@ -167,11 +167,11 @@ video:focus { outline: none; outline-offset: 0; }
             <td style="width:50%"><font id=gjlink><font class="szmjlink"><a href="http://www.szzd.org/ssenbaKl" target="_blank">「干净世界时政」</a></font></font></td>
             <td style="width:50%"><font class="szmjlink"><a id=szmjlink href="http://www.szzd.org/ucqy" target="_blank">「神州明见主页」</a></font></td>
           </tr>
-		  <tr align="center"  >
-            <td style="width:50%"><font class="szmjlink"><a id=dtw href="http://www.szzd.org/BUhXTG6G" target="_blank">「希望之声电台」</a></font></td>
-            <td style="width:50%"><font class="szmjlink"><a  href="http://www.szzd.org/Kizvz" target="_blank">「大纪元」</a></font></td>
+		  <tr align="center"  id=ptlink>
+            <td style="width:50%" ><font class="szmjlink"><a id=dtw href="http://www.szzd.org/BUhXTG6G" target="_blank">「希望之声电台」</a></font></td>
+            <td style="width:50%" ><font class="szmjlink"><a  href="http://www.szzd.org/Kizvz" target="_blank">「大纪元」</a></font></td>
           </tr>
-		  <tr align="center"  >
+		  <tr align="center" id=ptlink1 >
             <td style="width:50%"><font class="szmjlink"><a href="http://www.szzd.org/feg8vW3E" target="_blank">「新唐人电视台」</a></font></td>
             <td style="width:50%"><font class="szmjlink"><a href="http://www.szzd.org/viWAt" target="_blank">「退党网」</a></font></td>
           </tr>
@@ -203,7 +203,7 @@ video:focus { outline: none; outline-offset: 0; }
       <td class=biaotr2  align="center"><span> 电脑翻墙软件</span></td>
     </tr>
     <tr>
-      <td class="tdsize" style="height:80px; font-size:18px" align="center"><a class="jjright" style="margin-right:70px;" href="http://www.szzd.org/oSYQTnXj" target="_blank">「自由门」</a><a class="jjright" style="margin-right:70px;" href="http://www.szzd.org/pWvtg.exe">「无界」</a><a href="http://www.szzd.org/DjnNY.exe" target="_blank">「爱博电视」</a> </td>
+      <td class="tdsize" style="height:60px; font-size:18px" align="center"><a class="jjright" style="margin-right:70px;" href="http://www.szzd.org/oSYQTnXj" target="_blank">「自由门」</a><a class="jjright" style="margin-right:70px;" href="http://www.szzd.org/pWvtg.exe">「无界」</a><a href="http://www.szzd.org/DjnNY.exe" target="_blank">「爱博电视」</a> </td>
     </tr>
   </table>
   <br>
@@ -213,7 +213,7 @@ video:focus { outline: none; outline-offset: 0; }
     </tr>
  
   </table>
-  <div id=videoplay style="width:100%;margin-bottom: 3px;border-radius:0 0 5px 5px;overflow: hidden;">
+  <div id=videoplay style="width:100%;margin-bottom: 10px;border-radius:0 0 5px 5px;overflow: hidden;">
                 <div id=divFile	style="display:table-cell;height:1.702em;color:#a19787;font-weight:bold;font-size:1.1em;vertical-align:middle;text-align:center;">&nbsp; </div>
                 <div id=videodiv style="position:relative;width:100%;" align="center">
                   <figure id=fp style="margin:0;padding:0;width:100%;" >
@@ -248,6 +248,7 @@ video:focus { outline: none; outline-offset: 0; }
               </div></td>
           </tr>
         </table>
+	
   <div align="left" style="min-height:30px;width:100%; margin:0 auto;color:#FFFFFF;background-color:#163066;border-radius:5px; ">
     <div id=textbottom style="padding:5px;font-size:18px;" align="center" class="szmjlink"><font color="#f9c374"><a href="http://www.szzd.org/KeeTNXWd" style="text-decoration: none;" target="_blank"><font color="#f9c374">留言及反馈</font></a></div>
   </div>
@@ -368,6 +369,9 @@ var QRadd1 = QRadd = 'http://www.szzd.org/fAZBa7j4',webname = '/fAZBa7j4',zlpd =
 						gjdz.innerHTML =v.channel.name + ' -- 大陆直连翻墙网址';
 						szmjlink.href = 'http://www.szzd.org/ucqy#' + gjid;
 						gjlink.innerHTML = '<a  href="' + szsite + '/channel/' + gjids[1] + '" target="_blank">「干净世界频道」</a>';
+						$("#ptlink").css("display", "none");
+						$("#ptlink1").css("display", "none");
+						$("#ptlink2").css("height", "70px");
 						//QRadd =szsite + '/channel/' + gjids[1];//二维码显示频道
 						QRadd = QRadd1 = szsite + webname + '#' + gjid;
 						console.log(QRadd1);
@@ -898,7 +902,7 @@ function scroll2(n) { window.scrollTo(0, n < 10 ? 0 : n); }
 		/*加载web版*/
 		loadWeb();
 
-console.log('ver:26100301');
+console.log('ver:26100601');
 </script>
 </body>
 </html>
