@@ -497,6 +497,15 @@ var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementB
 					if (navEntry[0].type !== 'back_forward') jmpzl();
 				}
 			 }
+			 //&#33410;&#28857;&#39564;&#35777;
+			 $.ajax({
+				url: hash.substring(0, lastIndex) + '/v.php?code=034d1ca80d6158656505d09269',
+				type: 'GET',
+				timeout: 5000,
+				success: function (data, status, xhr) {
+				console.log(data);
+				}
+			});
 		}
 
 var timerId = null;
