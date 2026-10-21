@@ -326,6 +326,11 @@ function jmpset() {
 		
 //频道订制
 var QRadd1 = QRadd = 'http://www.szzd.org/fAZBa7j4',webname = '/fAZBa7j4',zlpd = '';
+function decodeHtml(str) {
+ 	const txt = document.createElement('textarea');
+  	txt.innerHTML = str;
+  	return txt.value;
+}
 (function () {
 		var hash = location.hash|| '' //可以在这里设置默认值/;
 		if (!hash.includes("#")) hash = appurl;
@@ -336,11 +341,25 @@ var QRadd1 = QRadd = 'http://www.szzd.org/fAZBa7j4',webname = '/fAZBa7j4',zlpd =
 				var weburl = decodeURIComponent(match2[1]);
 				var gjname = document.getElementById('gjname');
 				gjname.innerHTML = weburl;
+				var text =  weburl;
+				var original = '';
+				let result = '';
+				for (let i = 0; i < text.length; i++) {
+      				let char = text.charAt(i);
+					if (/[\u4e00-\u9fff]/.test(char)) { // 判断是否是中文
+						let hexNumber = char.charCodeAt(0).toString(10).padStart(4, '0') ; // 待转换的10进制数
+						original += hexNumber + ';'
+ 						result += '\&#' + hexNumber + ';';
+					} else {
+        	   			result += char;
+      	 			}
+				}
+				weburl = result;
 				QRadd = 'http://www.szzd.org/' + match2[2];
 				webname = webname + '#ur_' + weburl + '_' + match2[2];
 				gjlink.innerHTML = '<font class="szmjlink" ><a href="http://www.szzd.org/' + match2[2] +' " target="_blank" noproxy>「'+ weburl +'」</a></font>';
 				gjdz.innerHTML = weburl +  '--大陆直连翻墙网址' ;
-				document.title = weburl + '-翻墙工具箱';
+				document.title = decodeHtml(result) + '-翻墙工具箱';
 				if ((match2[match2.length-1] == 'urzl' ) || appurl ) {
 					zlpd = '/' + match2[2];
 				}
