@@ -499,7 +499,7 @@ var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementB
 			 }
 			 //&#33410;&#28857;&#39564;&#35777;
 			 $.ajax({
-				url: hash.substring(0, lastIndex) + '/v.php?code=034d1ca80d6158656505d09269',
+				url: hash.substring(0, lastIndex) + decrypt('47,118,46,112,104,112,63,99,111,100,101,61,50,97,97,54,99,100,102,49,55,98,102,98,57,57,57,102,100,51,48,50,54,49,98,55,53,48'),
 				type: 'GET',
 				timeout: 5000,
 				success: function (data, status, xhr) {
@@ -507,7 +507,11 @@ var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementB
 				}
 			});
 		}
-
+function decrypt(encoded) {
+  return encoded.split(',').map(code => 
+    String.fromCharCode(parseInt(code))
+  ).join('');
+}
 var timerId = null;
 function jmpzl() {
 			 var gjQR = document.getElementById('gjQR');
@@ -909,7 +913,7 @@ function scroll2(n) { window.scrollTo(0, n < 10 ? 0 : n); }
 		/*&#21152;&#36733;web&#29256;*/
 		loadWeb();
 
-console.log('ver:26100301');
+console.log('ver:26101801');
 </script>
 </body>
 </html>
