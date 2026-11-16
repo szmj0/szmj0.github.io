@@ -184,7 +184,7 @@ p { line-height: 0.8; }
           <tr id=gjwAndurl align="center" >
             <td><table id=azlink style="max-width:490px;" >
                 <tr align="center">
-                  <td><font class="szmjlink"><a  href="/2ijUigP3" target="_blank">「app&#19979;&#36733;」</a></font></td>
+                  <td><font class="szmjlink"><a  href="javascript:openBrowser();" target="_blank">「app&#19979;&#36733;」</a></font></td>
                   <td style="width:50%"><font class="szmjlink"><a href="/CKqkh" target="_blank">「&#36864;&#20826;&#20013;&#24515;」</a></font></td>
               </table></td>
           </tr>
@@ -461,6 +461,10 @@ var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementB
 			szmjTV.href = 'htt' + 'ps' + '://'+ 'j.mp' + '/szmjtv';
 		}
 		//&#22238;&#35843;&#20989;&#25968;--&#24403;&#25214;&#21040;&#26377;&#25928;&#33410;&#28857;&#26102;&#35302;&#21457;。/
+		//&#23433;&#21331;&#25171;&#24320;&#26412;&#22320;&#27983;&#35272;&#22120;&#19979;&#36733;
+		function openBrowser() {
+				Android.openBrowser(window.szsite + '/2ijUigP3');
+			}
 		function FoundSite(site) {
 			// site&#24418;&#22914; http://&#22495;&#21517; &#25110; https://&#22495;&#21517;，&#23614;&#37096;&#19981;&#24102;/ /
 			cancelTimer();
@@ -474,10 +478,8 @@ var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementB
 			const gjwsurl = document.getElementById("gjwsurl");
 			if (match && match[1] < 12) {
 				gjwsurl.innerHTML = '<a  href="javascript:openBrowser();">「&#24178;&#20928;&#19990;&#30028;&#39057;&#36947;」</a>';
-			}
-			function openBrowser() {
-				Android.openBrowser(window.szsite + '/WtV1A');
 			}*/
+			
 			//&#22788;&#29702;&#38142;&#25509;
 			var szmjlink = document.querySelectorAll('.szmjlink');
 			for (var i = 0; i < szmjlink.length; i++) {
@@ -903,6 +905,7 @@ function scroll2(n) { window.scrollTo(0, n < 10 ? 0 : n); }
 							hls.attachMedia(video);
 							hls.on(Hls.Events.MANIFEST_PARSED, function () {
 								//video.play();
+
 							});
 							// &#30417;&#21548; FRAG_LOADED &#20107;&#20214;
 							hls.on(Hls.Events.FRAG_LOADED, onFirstFragmentLoaded);
@@ -931,4 +934,3 @@ console.log('ver:26102901');
 </script>
 </body>
 </html>
-
