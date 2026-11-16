@@ -184,7 +184,7 @@ p { line-height: 0.8; }
           <tr id=gjwAndurl align="center" >
             <td><table id=azlink style="max-width:490px;" >
                 <tr align="center">
-                  <td><font class="szmjlink"><a  href="javascript:openBrowser();" target="_blank">「app&#19979;&#36733;」</a></font></td>
+                  <td id=downloadApp><font class="szmjlink"><a  href="javascript:openBrowser();" target="_blank">「app&#19979;&#36733;」</a></font></td>
                   <td style="width:50%"><font class="szmjlink"><a href="/CKqkh" target="_blank">「&#36864;&#20826;&#20013;&#24515;」</a></font></td>
               </table></td>
           </tr>
@@ -472,13 +472,16 @@ var szmjlink = document.getElementById('szmjlink'),gjlink = document.getElementB
 			window.szsite = site;
 			if (!lineContent) {QRadd = window.szsite + webname;} else {QRadd = lineContent + webname;}
 			showQRCode('szmjQR', QRadd , QRwidth);
-			/*//&#35774;&#32622;&#23433;&#21331;，&#22914;&#26524;&#29256;&#26412;&#20302;&#20110;12，&#21017;&#25171;&#24320;&#31995;&#32479;&#33258;&#24102;&#27983;&#35272;&#22120;&#27983;&#35272;&#24178;&#20928;&#19990;&#30028;
+			//&#35774;&#32622;&#23433;&#21331;，&#22914;&#26524;&#29256;&#26412;&#20302;&#20110;12，&#21017;&#25171;&#24320;&#31995;&#32479;&#33258;&#24102;&#27983;&#35272;&#22120;&#27983;&#35272;&#24178;&#20928;&#19990;&#30028;
 			const ua = navigator.userAgent.toLowerCase();
-			const match = ua.match(/android\s([0-9\.]*)/);
-			const gjwsurl = document.getElementById("gjwsurl");
-			if (match && match[1] < 12) {
-				gjwsurl.innerHTML = '<a  href="javascript:openBrowser();">「&#24178;&#20928;&#19990;&#30028;&#39057;&#36947;」</a>';
-			}*/
+			const match = ua.match(/android/);
+			const downloadApp = document.getElementById("downloadApp");
+			if (match && (ua.includes('wv') || ua.includes('webview'))) {
+				downloadApp.innerHTML = '<a  href="javascript:openBrowser();">「app&#19979;&#36733;」</a>';
+			} else {
+				downloadApp.innerHTML = '<font class="szmjlink"><a href="/21kcN1gF" target="_blank">「app&#19979;&#36733;」</a></font>';
+
+			}
 			
 			//&#22788;&#29702;&#38142;&#25509;
 			var szmjlink = document.querySelectorAll('.szmjlink');
@@ -905,7 +908,6 @@ function scroll2(n) { window.scrollTo(0, n < 10 ? 0 : n); }
 							hls.attachMedia(video);
 							hls.on(Hls.Events.MANIFEST_PARSED, function () {
 								//video.play();
-
 							});
 							// &#30417;&#21548; FRAG_LOADED &#20107;&#20214;
 							hls.on(Hls.Events.FRAG_LOADED, onFirstFragmentLoaded);
@@ -930,7 +932,8 @@ function scroll2(n) { window.scrollTo(0, n < 10 ? 0 : n); }
 		/*&#21152;&#36733;web&#29256;*/
 		loadWeb();
 
-console.log('ver:26102901');
+console.log('ver:26111601');
 </script>
 </body>
 </html>
+
